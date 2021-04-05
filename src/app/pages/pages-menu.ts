@@ -71,32 +71,32 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'الإعلانات',
     icon: 'keypad-outline',
     link: '/pages/advertising',
-    children: [
-      {
-        title: 'إضافة إعلان',
-        link: '/pages/advertising/add',
-      },
-      {
-        title: 'عرض الإعلانات',
-        link: '/pages/advertising',
-      },
-      // {
-      //   title: 'Grid',
-      //   link: '/pages/ui-features/grid',
-      // },
-      // {
-      //   title: 'Icons',
-      //   link: '/pages/ui-features/icons',
-      // },
-      // {
-      //   title: 'Typography',
-      //   link: '/pages/ui-features/typography',
-      // },
-      // {
-      //   title: 'Animated Searches',
-      //   link: '/pages/ui-features/search-fields',
-      // },
-    ],
+    // children: [
+    //   {
+    //     title: 'إضافة إعلان',
+    //     link: '/pages/advertising/add',
+    //   },
+    //   {
+    //     title: 'عرض الإعلانات',
+    //     link: '/pages/advertising',
+    //   },
+    //   // {
+    //   //   title: 'Grid',
+    //   //   link: '/pages/ui-features/grid',
+    //   // },
+    //   // {
+    //   //   title: 'Icons',
+    //   //   link: '/pages/ui-features/icons',
+    //   // },
+    //   // {
+    //   //   title: 'Typography',
+    //   //   link: '/pages/ui-features/typography',
+    //   // },
+    //   // {
+    //   //   title: 'Animated Searches',
+    //   //   link: '/pages/ui-features/search-fields',
+    //   // },
+    // ],
   },
   {
     title: 'الوحدات التعليمية ',
@@ -179,22 +179,22 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //   //   },
   //   // ],
   // },
-  // {
-  //   title: 'رسائل المقرر',
-  //   icon: 'text-outline',
-  //   link: '/pages/CourseMessage',
+  {
+    title: 'رسائل المقرر',
+    icon: 'text-outline',
+    link: '/pages/CourseMessage',
 
-  //   // children: [
-  //   //   {
-  //   //     title: 'TinyMCE',
-  //   //     link: '/pages/editors/tinymce',
-  //   //   },
-  //   //   {
-  //   //     title: 'CKEditor',
-  //   //     link: '/pages/editors/ckeditor',
-  //   //   },
-  //   // ],
-  // },
+    // children: [
+    //   {
+    //     title: 'TinyMCE',
+    //     link: '/pages/editors/tinymce',
+    //   },
+    //   {
+    //     title: 'CKEditor',
+    //     link: '/pages/editors/ckeditor',
+    //   },
+    // ],
+  },
   {
     title: 'الأدوات',
     icon: 'grid-outline',
@@ -249,21 +249,21 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //     },
   //   ],
   // },
-  {
-    title: 'الطلاب ',
-    icon: 'browser-outline',
-    children: [
-      {
-        title: 'عرض الطلاب',
-        link: '/pages/students',
-      },
-      {
-        title: 'اضافة طالب',
-        link: '/pages/students/add',
-      },
-    ]
+  // {
+  //   title: 'الطلاب ',
+  //   icon: 'browser-outline',
+  //   children: [
+  //     {
+  //       title: 'عرض الطلاب',
+  //       link: '/pages/students',
+  //     },
+  //     {
+  //       title: 'اضافة طالب',
+  //       link: '/pages/students/add',
+  //     },
+  //   ]
 
-  },
+  // },
   // {
   //   title: 'Auth',
   //   icon: 'lock-outline',

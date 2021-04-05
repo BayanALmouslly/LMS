@@ -16,4 +16,12 @@ export class StartComponent implements OnInit {
   nextStep(){
     this.router.navigate(['/pages/courses'])
   }
+  CourseMessage(){
+    this.router.navigate(['/pages/CourseMessage'])
+
+  }
+  discussions(){
+    this.router.navigate(['/pages/discussions'])
+
+  }
 }
