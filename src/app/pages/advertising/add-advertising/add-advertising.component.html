@@ -1,0 +1,34 @@
+<header>
+    <div class="owl-carousel owl-theme">
+        <div class="item">
+            <img src="assets/images/Study.jpg"  alt="">
+            <div class="cover">
+                <div class="container">
+                    <div class="header-content">
+                        <div class="line"></div>
+                        <h2></h2>
+                        <h1>اضافة إعلان</h1>
+                        <h4></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<nb-card>
+    <nb-card-header>اضافة اعلان</nb-card-header>
+    <nb-card-body>
+      <form>
+       
+        <div class="form-group">
+          <input type="text" nbInput fullWidth placeholder="العنوان" [(ngModel)]="advertising.title" name="title">
+        </div>
+        <div class="form-group">
+          <textarea nbInput placeholder="الوصف"fullWidth [(ngModel)]="advertising.description" name="description"></textarea>
+        </div>
+        <button type="submit" nbButton status="success"(click)="addAdvertising()">اضافة</button>
+      </form>
+    </nb-card-body>
+  </nb-card>

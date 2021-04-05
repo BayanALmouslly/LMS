@@ -1,0 +1,67 @@
+<header>
+  <div class="owl-carousel owl-theme">
+    <div class="item">
+      <img src="assets/images/Study.jpg" alt="">
+      <div class="cover">
+        <div class="container">
+          <div class="header-content">
+            <div class="line"></div>
+            <h2></h2>
+            <h1>رسائل المقرر</h1>
+            <h4></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- ======= Counts Section ======= -->
+<section id="counts" class="counts">
+  <div class="container">
+
+    <div class="text-center title">
+      <h3>رسائل المقرر الدراسي</h3>
+      <p>Iusto et labore modi qui sapiente xpedita tempora et aut non ipsum consequatur illo.</p>
+    </div>
+
+
+
+  </div>
+</section><!-- End Counts Section -->
+<div class="card">
+  <div class="card-body">
+    <ng-template #card>
+      <nb-card class="popover-card">
+        <nb-card-header status="warning">
+          Hello!
+        </nb-card-header>
+        <nb-card-body>
+          Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+          Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+        </nb-card-body>
+      </nb-card>
+    </ng-template>
+    <button nbButton status="warning" [nbPopover]="card">انشاء مجلد</button>
+    <button nbButton status="warning" [nbPopover]="card">انشاء رسالة</button>
+
+    <table class="table">
+      <thead>
+        <th>المجلد</th>
+        <th>غير المقروء</th>
+        <th>الإجمالي</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>تم الارسال</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>علبة الوارد</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
