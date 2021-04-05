@@ -8,10 +8,10 @@ const routes: Routes = [
     path: '',
     component: ShowStudentComponent
   },
-  {
-    path: 'add',
-    component: AddStudentComponent
-  },
+  // {
+  //   path: 'add',
+  //   component: AddStudentComponent
+  // },
 ];
 
 @NgModule({

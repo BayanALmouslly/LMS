@@ -14,7 +14,6 @@ import { CourseMessageModule } from './course-message/course-message.module';
 import { HelpModule } from './help/help.module';
 import { MarksModule } from './marks/marks.module';
 import { ToolsModule } from './tools/tools.module';
-import { StudentsModule } from './students/students.module';
 
 @NgModule({
   imports: [
@@ -31,7 +30,7 @@ import { StudentsModule } from './students/students.module';
     HelpModule,
     MarksModule,
     ToolsModule,
-    StudentsModule
+    
   ],
   declarations: [
     PagesComponent,

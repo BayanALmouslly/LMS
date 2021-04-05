@@ -16,6 +16,11 @@ export const routes: Routes = [
       .then(m => m.PagesModule),
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./adminpages/adminpages.module')
+      .then(m => m.AdminpagesModule),
+  },
+  {
     path: 'auth',
     component: NbAuthComponent,
     children: [

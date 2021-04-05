@@ -1,0 +1,66 @@
+<nb-card style="direction: rtl;">
+    <nb-card-header> اضافة طالب</nb-card-header>
+    <nb-card-body>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="inputFirstName" class="label">الاسم الأول</label>
+                    <input type="text" nbInput fullWidth id="inputFirstName" [(ngModel)]="student.FirstName"
+                        placeholder="First Name">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="inputLastName" class="label">الاسم الأخير</label>
+                    <input type="text" nbInput fullWidth id="inputLastName" [(ngModel)]="student.LastName"
+                        placeholder="Last Name">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="inputEmail" class="label">البريد الإلكتروني</label>
+                    <input type="email" nbInput fullWidth id="inputEmail" [(ngModel)]="student.Email"
+                        placeholder="Email">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group ">
+                    <label for="inputPassword3" class="label col-sm-3 form-control-label">كلمة السر</label>
+
+                    <input type="password" nbInput fullWidth id="inputPassword3" [(ngModel)]="student.Password"
+                        placeholder="Password">
+
+                </div>
+            </div>
+        </div>
+        <button type="submit" nbButton (click)="addStudent()">اضافة</button>
+    </nb-card-body>
+</nb-card>
+<nb-card style="height: 500px;">
+    <nb-card-header> اضافة طالب</nb-card-header>
+    <nb-card-body>
+        <div class="table-responsive">
+            <table class="table table-striped" style="direction: rtl;">
+                <thead class="table-info">
+                    <tr>
+                        <th>اسم الطالب </th>
+                        <th>البريد الالكتروني</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let stud of students">
+                        <td>{{stud.FirstName}} &nbsp;{{stud.LastName}}</td>
+                        <td>{{stud.Email}}</td>
+                        <td >
+                            <i class="fas fa-edit"></i>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </nb-card-body>
+</nb-card>

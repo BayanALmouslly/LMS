@@ -21,7 +21,7 @@
 
     <div class="text-center title">
       <h3>رسائل المقرر الدراسي</h3>
-      <p>Iusto et labore modi qui sapiente xpedita tempora et aut non ipsum consequatur illo.</p>
+      <p></p>
     </div>
 
 
@@ -33,15 +33,15 @@
     <ng-template #card>
       <nb-card class="popover-card">
         <nb-card-header status="warning">
-          Hello!
         </nb-card-header>
         <nb-card-body>
-          Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-          Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+          <label for="inputFirstName" class="label"></label>
+                    <input type="text" nbInput fullWidth id="inputFirstName" 
+                        placeholder="ادخل نص">
         </nb-card-body>
       </nb-card>
     </ng-template>
-    <button nbButton status="warning" [nbPopover]="card">انشاء مجلد</button>
+    <button nbButton status="warning" [nbPopover]="card">انشاء مجلد</button> &nbsp;
     <button nbButton status="warning" [nbPopover]="card">انشاء رسالة</button>
 
     <table class="table">

@@ -64,11 +64,7 @@ const routes: Routes = [{
       loadChildren: () => import('./tools/tools.module')
         .then(m => m.ToolsModule),
     },
-    {
-      path: 'students',
-      loadChildren: () => import('./students/students.module')
-        .then(m => m.StudentsModule),
-    },
+  
     {
       path: '',
       redirectTo: 'homepage',

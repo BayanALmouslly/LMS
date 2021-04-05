@@ -19,4 +19,11 @@ nextStep(){
   this.router.navigate(['/pages/discussions']);
 
 }
+downloadFile() {
+  // const blob = new Blob([data], { type: 'text/csv' });
+  // const url= window.URL.createObjectURL(blob);
+  // window.open(url);
+  window.location.pathname='assets/unit1.pdf';
+
+}
 }
