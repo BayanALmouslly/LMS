@@ -20,6 +20,6 @@ nextStep(){
 
 }
 downloadFile() {
-  window.location.href='assets/unit1.pdf';
+  window.location.href='./assets/unit1.pdf';
 }
 }
