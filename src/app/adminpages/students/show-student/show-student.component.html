@@ -39,7 +39,7 @@
     </nb-card-body>
 </nb-card>
 <nb-card style="height: 500px;">
-    <nb-card-header> اضافة طالب</nb-card-header>
+    <nb-card-header>  الطلاب</nb-card-header>
     <nb-card-body>
         <div class="table-responsive">
             <table class="table table-striped" style="direction: rtl;">
@@ -47,7 +47,7 @@
                     <tr>
                         <th>اسم الطالب </th>
                         <th>البريد الالكتروني</th>
-                        <th></th>
+                        <th>حذف</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,7 +55,7 @@
                         <td>{{stud.FirstName}} &nbsp;{{stud.LastName}}</td>
                         <td>{{stud.Email}}</td>
                         <td >
-                            <i class="fas fa-edit"></i>
+                            <a (click)="delete(stud)"><i class="fa fa-trash" style="color:rgb(0, 0, 49);"></i></a>   
                         </td>
                     </tr>
 

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { StudentsRoutingModule } from './students-routing.module';
-import { ShowStudentComponent } from './show-student/show-student.component';
+import { AdvertisementRoutingModule } from './advertisement-routing.module';
+import { AdvertisementComponent } from '../advertisement/advertisement.component';
 import { FormsModule as ngFormsModule } from '@angular/forms';
 import {
   NbActionsModule,
@@ -17,10 +17,10 @@ import {
 } from '@nebular/theme';
 
 @NgModule({
-  declarations: [ ShowStudentComponent],
+  declarations: [AdvertisementComponent],
   imports: [
     CommonModule,
-    StudentsRoutingModule,
+    AdvertisementRoutingModule,
     NbActionsModule,
     NbButtonModule,
     NbCardModule,
@@ -33,4 +33,4 @@ import {
     ngFormsModule
   ]
 })
-export class StudentsModule { }
+export class AdvertisementModule { }

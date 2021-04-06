@@ -49,7 +49,7 @@ import { NbAuthModule, NbOAuth2AuthStrategy, NbPasswordAuthStrategy } from '@neb
           login: {
             redirect: {
               success: '/pages',
-              failure: null, // stay on the same page
+              // failure: null, // stay on the same page
             },
           },
 

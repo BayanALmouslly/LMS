@@ -22,4 +22,7 @@ export class ShowStudentComponent implements OnInit {
     this.students.push(this.student)
     this.student = new Student()
   }
+  delete(item){
+    this.students=this.students.filter(a=>a!=item)
+  }
 }

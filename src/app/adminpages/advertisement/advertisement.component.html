@@ -1,0 +1,41 @@
+<nb-card>
+    <nb-card-header>اضافة اعلان</nb-card-header>
+    <nb-card-body>
+      <form>
+       
+        <div class="form-group">
+          <input type="text" nbInput fullWidth placeholder="العنوان" [(ngModel)]="advertising.title" name="title">
+        </div>
+        <div class="form-group">
+          <textarea nbInput placeholder="الوصف"fullWidth [(ngModel)]="advertising.description" name="description"></textarea>
+        </div>
+        <button type="submit" nbButton (click)="addAdvertising()">اضافة</button>
+      </form>
+    </nb-card-body>
+  </nb-card>
+<nb-card style="height: 500px;width: 100%;">
+    <nb-card-header> الإعلانات </nb-card-header>
+    <nb-card-body>
+        <div class="table-responsive">
+            <table class="table table-striped" style="direction: rtl;">
+                <thead class="table-info">
+                    <tr>
+                        <th>العنوان </th>
+                        <th>الوصف</th>
+                        <th>حذف</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let  adver of advertisings">
+                        <td>{{ adver.title}}</td>
+                        <td>{{ adver.description}}</td>
+                        <td >
+                         <a (click)="delete(adver)"><i class="fa fa-trash" style="color:rgb(0, 0, 49);"></i></a>   
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </nb-card-body>
+</nb-card>
