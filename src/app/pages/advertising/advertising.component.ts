@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Advertising } from '../../model/advertising.model';
+import { AdvertisingService } from '../../service/advertising.service';
 
 @Component({
   selector: 'ngx-advertising',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdvertisingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private advertisingService: AdvertisingService) { }
+  advertisings: Advertising[]=[]
 
   ngOnInit(): void {
+    this.get()
   }
+  get(){
+    this.advertisingService.Get().subscribe(res=>{
+      this.advertisings=res
 
+    })
+  }
 }
