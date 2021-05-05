@@ -2,10 +2,10 @@ import { EmailValidator } from '@angular/forms'
 
 export class Student {
     id
-    FirstName:string
-    LastName:string
     Name:string
     Mail:string
+    name:string
+    eMail:string
     Passowrd:string
 
 }

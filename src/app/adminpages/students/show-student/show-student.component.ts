@@ -18,8 +18,11 @@ export class ShowStudentComponent implements OnInit {
   }
   addStudent() {
      this.studentService.Add(this.student).subscribe(res=>{
+       this.student.name=this.student.Name
+       this.student.eMail=this.student.Mail
       this.students.push(this.student)
       this.student = new Student()
+      
      })   
   }
   delete(item){
@@ -31,6 +34,8 @@ export class ShowStudentComponent implements OnInit {
   get(){
     this.studentService.Get().subscribe(res=>{
       this.students=res
+      console.log(res)
+
     })
   }
 }

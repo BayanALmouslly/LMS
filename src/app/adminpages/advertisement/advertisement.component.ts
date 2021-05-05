@@ -18,6 +18,9 @@ export class AdvertisementComponent implements OnInit {
   }
   addAdvertising() {
     this.advertisingService.Add(this.advertising).subscribe(res => {
+      this.advertising.name=this.advertising.Name
+      this.advertising.description=this.advertising.Desc
+      this.advertising.link=this.advertising.Link
       this.advertisings.push(this.advertising)
       this.advertising = new Advertising()
     })
@@ -31,6 +34,7 @@ export class AdvertisementComponent implements OnInit {
   get(){
     this.advertisingService.Get().subscribe(res=>{
       this.advertisings=res
+
     })
   }
 }

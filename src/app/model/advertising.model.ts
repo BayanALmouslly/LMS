@@ -2,6 +2,9 @@ export class Advertising {
     id
     Name:string
     Desc:string
-    CreateDate:Date
+    name:string
+    description:string
+    createDate:Date
     Link:string
+    link:string
 }
