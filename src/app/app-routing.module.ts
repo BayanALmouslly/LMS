@@ -10,7 +10,11 @@ import {
 } from '@nebular/auth';
 
 export const routes: Routes = [
-  
+  {
+    path: '',
+    loadChildren: () => import('./login/login.module')
+      .then(m => m.LoginModule),
+  },
   {
     path: 'pages',
     loadChildren: () => import('./pages/pages.module')
@@ -21,11 +25,11 @@ export const routes: Routes = [
     loadChildren: () => import('./adminpages/adminpages.module')
       .then(m => m.AdminpagesModule),
   },
-  {
-    path: 'login',
-    loadChildren: () => import('./login/login.module')
-      .then(m => m.LoginModule),
-  },
+  // {
+  //   path: 'login',
+  //   loadChildren: () => import('./login/login.module')
+  //     .then(m => m.LoginModule),
+  // },
   {
     path: 'auth',
     component: NbAuthComponent,

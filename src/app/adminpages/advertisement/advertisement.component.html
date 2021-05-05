@@ -4,10 +4,13 @@
       <form>
        
         <div class="form-group">
-          <input type="text" nbInput fullWidth placeholder="العنوان" [(ngModel)]="advertising.title" name="title">
+          <input type="text" nbInput fullWidth placeholder="العنوان" [(ngModel)]="advertising.Name" name="title">
         </div>
         <div class="form-group">
-          <textarea nbInput placeholder="الوصف"fullWidth [(ngModel)]="advertising.description" name="description"></textarea>
+          <input type="text" nbInput fullWidth placeholder="رابط" [(ngModel)]="advertising.Link" name="title">
+        </div>
+        <div class="form-group">
+          <textarea nbInput placeholder="الوصف"fullWidth [(ngModel)]="advertising.Desc" name="description"></textarea>
         </div>
         <button type="submit" nbButton (click)="addAdvertising()">اضافة</button>
       </form>
@@ -22,13 +25,17 @@
                     <tr>
                         <th>العنوان </th>
                         <th>الوصف</th>
+                        <th>رابط</th>
+                        <th>تاريخ الإضافة</th>
                         <th>حذف</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let  adver of advertisings">
-                        <td>{{ adver.title}}</td>
-                        <td>{{ adver.description}}</td>
+                        <td>{{ adver.Name}}</td>
+                        <td>{{ adver.Desc}}</td>
+                        <td>{{ adver.Link}}</td>
+                        <td>{{ adver.CreateDate}}</td>
                         <td >
                          <a (click)="delete(adver)"><i class="fa fa-trash" style="color:rgb(0, 0, 49);"></i></a>   
                         </td>

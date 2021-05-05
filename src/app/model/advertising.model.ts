@@ -1,4 +1,7 @@
 export class Advertising {
-    title:string
-    description:string
+    id
+    Name:string
+    Desc:string
+    CreateDate:Date
+    Link:string
 }

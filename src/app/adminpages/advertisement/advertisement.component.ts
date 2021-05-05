@@ -14,15 +14,23 @@ export class AdvertisementComponent implements OnInit {
   advertisings: Advertising[]=[]
   ngOnInit(): void {
     this.advertising = new Advertising()
+    this.get()
   }
   addAdvertising() {
-    // this.advertisingService.Add(this.advertising).subscribe(res => {
-
-    // })
-    this.advertisings.push(this.advertising)
-    this.advertising = new Advertising()
+    this.advertisingService.Add(this.advertising).subscribe(res => {
+      this.advertisings.push(this.advertising)
+      this.advertising = new Advertising()
+    })
   }
   delete(item){
-    this.advertisings=this.advertisings.filter(a=>a!=item)
+    this.advertisingService.Delete(item.id).subscribe(res => {
+      this.advertisings=this.advertisings.filter(a=>a!=item)
+
+    })
+  }
+  get(){
+    this.advertisingService.Get().subscribe(res=>{
+      this.advertisings=res
+    })
   }
 }

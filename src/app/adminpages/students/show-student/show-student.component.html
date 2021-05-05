@@ -4,24 +4,18 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="inputFirstName" class="label">الاسم الأول</label>
-                    <input type="text" nbInput fullWidth id="inputFirstName" [(ngModel)]="student.FirstName"
-                        placeholder="First Name">
+                    <label for="inputFirstName" class="label">الاسم </label>
+                    <input type="text" nbInput fullWidth id="inputFirstName" [(ngModel)]="student.Name"
+                        placeholder=" Name">
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="inputLastName" class="label">الاسم الأخير</label>
-                    <input type="text" nbInput fullWidth id="inputLastName" [(ngModel)]="student.LastName"
-                        placeholder="Last Name">
-                </div>
-            </div>
+           
         </div>
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="inputEmail" class="label">البريد الإلكتروني</label>
-                    <input type="email" nbInput fullWidth id="inputEmail" [(ngModel)]="student.Email"
+                    <input type="email" nbInput fullWidth id="inputEmail" [(ngModel)]="student.Mail"
                         placeholder="Email">
                 </div>
             </div>
@@ -29,7 +23,7 @@
                 <div class="form-group ">
                     <label for="inputPassword3" class="label col-sm-3 form-control-label">كلمة السر</label>
 
-                    <input type="password" nbInput fullWidth id="inputPassword3" [(ngModel)]="student.Password"
+                    <input type="password" nbInput fullWidth id="inputPassword3" [(ngModel)]="student.Passowrd"
                         placeholder="Password">
 
                 </div>
@@ -52,8 +46,8 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let stud of students">
-                        <td>{{stud.FirstName}} &nbsp;{{stud.LastName}}</td>
-                        <td>{{stud.Email}}</td>
+                        <td>{{stud.Name}} </td>
+                        <td>{{stud.Mail}}</td>
                         <td >
                             <a (click)="delete(stud)"><i class="fa fa-trash" style="color:rgb(0, 0, 49);"></i></a>   
                         </td>

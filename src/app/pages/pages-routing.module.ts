@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
+import { AuthGuard } from '../login/auth.guard';
 
 const routes: Routes = [{
   path: '',
@@ -11,47 +12,47 @@ const routes: Routes = [{
     {
       path: 'homepage',
       loadChildren: () => import('./home-pages/home-pages.module')
-        .then(m => m.HomePagesModule),
+        .then(m => m.HomePagesModule), canActivate: [AuthGuard]
     },
     {
       path: 'educationalunit',
       loadChildren: () => import('./educational-units/educational-units.module')
-        .then(m => m.EducationalUnitsModule),
+        .then(m => m.EducationalUnitsModule),canActivate: [AuthGuard]
     },
     {
       path: 'courses',
       loadChildren: () => import('./course-descriptions/course-descriptions.module')
-        .then(m => m.CourseDescriptionsModule),
+        .then(m => m.CourseDescriptionsModule),canActivate: [AuthGuard]
     },
     {
       path: 'coursePolicy',
       loadChildren: () => import('./course-policy/course-policy.module')
-        .then(m => m.CoursePolicyModule),
+        .then(m => m.CoursePolicyModule),canActivate: [AuthGuard]
     },
     {
       path: 'advertising',
       loadChildren: () => import('./advertising/advertising.module')
-        .then(m => m.AdvertisingModule),
+        .then(m => m.AdvertisingModule),canActivate: [AuthGuard]
     },
     {
       path: 'CourseEvaluation',
       loadChildren: () => import('./course-evaluation/course-evaluation.module')
-        .then(m => m.CourseEvaluationModule),
+        .then(m => m.CourseEvaluationModule),canActivate: [AuthGuard]
     },
     {
       path: 'CourseMessage',
       loadChildren: () => import('./course-message/course-message.module')
-        .then(m => m.CourseMessageModule),
+        .then(m => m.CourseMessageModule),canActivate: [AuthGuard]
     },
     {
       path: 'discussions',
       loadChildren: () => import('./discussions/discussions.module')
-        .then(m => m.DiscussionsModule),
+        .then(m => m.DiscussionsModule),canActivate: [AuthGuard]
     },
     {
       path: 'help',
       loadChildren: () => import('./help/help.module')
-        .then(m => m.HelpModule),
+        .then(m => m.HelpModule),canActivate: [AuthGuard]
     },
 
     {

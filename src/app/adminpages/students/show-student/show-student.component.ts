@@ -14,15 +14,23 @@ export class ShowStudentComponent implements OnInit {
   students: Student[] = []
   ngOnInit(): void {
     this.student = new Student()
+    this.get()
   }
   addStudent() {
-    //  this.studentService.Add(this.student).subscribe(res=>{
-
-    //  })
-    this.students.push(this.student)
-    this.student = new Student()
+     this.studentService.Add(this.student).subscribe(res=>{
+      this.students.push(this.student)
+      this.student = new Student()
+     })   
   }
   delete(item){
-    this.students=this.students.filter(a=>a!=item)
+    this.studentService.Delete(item.id).subscribe(res=>{
+      this.students=this.students.filter(a=>a!=item)
+
+     }) 
+  }
+  get(){
+    this.studentService.Get().subscribe(res=>{
+      this.students=res
+    })
   }
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../login/auth.guard';
 import { AdminpagesComponent } from './adminpages.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
@@ -16,17 +17,17 @@ const routes: Routes = [
     {
       path: 'students',
       loadChildren: () => import('./students/students.module')
-        .then(m => m.StudentsModule),
+        .then(m => m.StudentsModule), //canActivate: [AuthGuard]
     },
     {
       path: 'advertisement',
       loadChildren: () => import('./advertisement/advertisement.module')
-        .then(m => m.AdvertisementModule),
+        .then(m => m.AdvertisementModule), //canActivate: [AuthGuard]
     },
     {
       path: 'educationalunits',
       loadChildren: () => import('./educational-units/educational-units.module')
-        .then(m => m.EducationalUnitsModule),
+        .then(m => m.EducationalUnitsModule), //canActivate: [AuthGuard]
     },
     
   ],}

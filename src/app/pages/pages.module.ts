@@ -14,6 +14,8 @@ import { CourseMessageModule } from './course-message/course-message.module';
 import { HelpModule } from './help/help.module';
 import { MarksModule } from './marks/marks.module';
 import { ToolsModule } from './tools/tools.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../login/auth.interceptor';
 
 @NgModule({
   imports: [
@@ -35,6 +37,11 @@ import { ToolsModule } from './tools/tools.module';
   declarations: [
     PagesComponent,
   ],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  },],
 })
 export class PagesModule {
 }

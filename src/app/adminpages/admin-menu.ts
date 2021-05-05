@@ -12,21 +12,21 @@ export const admin_MENU_ITEMS: NbMenuItem[] = [
     icon: 'keypad-outline',
     link: '/admin/advertisement',
   },
-  {
-    title: 'الوحدات التعليمية ',
-    icon: 'browser-outline',
+  // {
+  //   title: 'الوحدات التعليمية ',
+  //   icon: 'browser-outline',
   
-    children: [
-      {
-        title: 'اضافة وحدة تعليمية',
-        link: '/admin/educationalunits/add',
-      },
-      {
-        title: 'عرض الوحدات التعليمية',
-        link: '/admin/educationalunits',
-      },
-    ]
-  },
+  //   children: [
+  //     {
+  //       title: 'اضافة وحدة تعليمية',
+  //       link: '/admin/educationalunits/add',
+  //     },
+  //     {
+  //       title: 'عرض الوحدات التعليمية',
+  //       link: '/admin/educationalunits',
+  //     },
+  //   ]
+  // },
 
 
 
