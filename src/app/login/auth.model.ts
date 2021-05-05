@@ -1,8 +1,10 @@
 export class Auth {
     Id
-    Token:string;
+    token:string;
     Name
-    IsAdmin
+    name
+    isAdmin
     EMail
+    eMail
     Password
 }

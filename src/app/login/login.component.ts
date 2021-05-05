@@ -20,11 +20,10 @@ export class LoginComponent implements OnInit {
   login() {
     if(!this.auth.Password||!this.auth.EMail)return
     this.authservice.login(this.auth).subscribe(res => {
-      let user = (<any>res).Token;
-      console.log(res)
+      let user = (<Auth>res).token;
       localStorage.setItem('login', JSON.stringify(res));
       localStorage.setItem('user', user);
-      if(res.IsAdmin)
+      if(res.isAdmin==true)
       this.router.navigate(['admin'])
       else
       this.router.navigateByUrl('pages/homepage');
