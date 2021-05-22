@@ -17,9 +17,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.auth=new Auth()
   }
+  loading = false;
+
   login() {
+    this.loading=true
     if(!this.auth.Password||!this.auth.EMail)return
     this.authservice.login(this.auth).subscribe(res => {
+      this.loading=false
       let user = (<Auth>res).token;
       localStorage.setItem('login', JSON.stringify(res));
       localStorage.setItem('user', user);
@@ -27,6 +31,9 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['admin'])
       else
       this.router.navigateByUrl('pages/homepage');
+    },err=>{
+      this.loading=false
+
     })
 
   }

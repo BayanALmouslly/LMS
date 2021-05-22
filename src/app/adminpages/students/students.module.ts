@@ -13,6 +13,8 @@ import {
   NbInputModule,
   NbRadioModule,
   NbSelectModule,
+  NbSpinnerModule,
+  NbToastrModule,
   NbUserModule,
 } from '@nebular/theme';
 
@@ -30,7 +32,10 @@ import {
     NbRadioModule,
     NbSelectModule,
     NbUserModule,
-    ngFormsModule
+    ngFormsModule,
+    NbToastrModule,
+    NbSpinnerModule
+
   ]
 })
 export class StudentsModule { }

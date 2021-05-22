@@ -195,34 +195,34 @@ export const MENU_ITEMS: NbMenuItem[] = [
     //   },
     // ],
   },
-  {
-    title: 'الأدوات',
-    icon: 'grid-outline',
-    link: '/pages/tools',
+  // {
+  //   title: 'الأدوات',
+  //   icon: 'grid-outline',
+  //   link: '/pages/tools',
 
-    // children: [
-    //   {
-    //     title: 'Smart Table',
-    //     link: '/pages/tables/smart-table',
-    //   },
-    //   {
-    //     title: 'Tree Grid',
-    //     link: '/pages/tables/tree-grid',
-    //   },
-    // ],
-  },
-  {
-    title: 'الدعم والمساعدة',
-    icon: 'shuffle-2-outline',
-    link: '/pages/help',
+  //   // children: [
+  //   //   {
+  //   //     title: 'Smart Table',
+  //   //     link: '/pages/tables/smart-table',
+  //   //   },
+  //   //   {
+  //   //     title: 'Tree Grid',
+  //   //     link: '/pages/tables/tree-grid',
+  //   //   },
+  //   // ],
+  // },
+  // {
+  //   title: 'الدعم والمساعدة',
+  //   icon: 'shuffle-2-outline',
+  //   link: '/pages/help',
 
-    // children: [
-    //   {
-    //     title: '404',
-    //     link: '/pages/miscellaneous/404',
-    //   },
-    // ],
-  },
+  //   // children: [
+  //   //   {
+  //   //     title: '404',
+  //   //     link: '/pages/miscellaneous/404',
+  //   //   },
+  //   // ],
+  // },
   // {
   //   title: 'الوحدات التعليمية ',
   //   icon: 'browser-outline',
