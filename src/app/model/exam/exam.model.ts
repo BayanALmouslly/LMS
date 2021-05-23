@@ -1,4 +1,5 @@
 export class Exam {
+    id
     Title:string
     Date:Date
     quetion:quetion[]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NbToastrService } from '@nebular/theme';
 import { Exam } from '../../../model/exam/exam.model';
 import { ExamService } from '../../../service/exam.service';
 
@@ -9,7 +10,8 @@ import { ExamService } from '../../../service/exam.service';
 })
 export class ShowExamsComponent implements OnInit {
 
-  constructor(private examservvice:ExamService) { }
+  constructor(private examservvice:ExamService,
+    private toastrService: NbToastrService) { }
 exams:Exam[]=[]
   ngOnInit(): void {
     this.Get()
@@ -17,6 +19,16 @@ exams:Exam[]=[]
 Get(){
   this.examservvice.Get().subscribe(res=>{
     this.exams=res
+  })
+}
+delete(exam,position){
+  this.examservvice.Delete(exam.id).subscribe(res=>{
+    this.exams=this.exams.filter(e=>e!=exam)
+    this.toastrService.show(
+      status || 'تم الحذف بنجاح',
+      `حذف`,
+      { position, status });
+
   })
 }
 }
