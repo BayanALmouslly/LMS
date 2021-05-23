@@ -15,15 +15,16 @@ export class AddExamComponent implements OnInit {
   exam: Exam = new Exam
   quetion:quetion=new quetion
   ngOnInit(): void {
-    this.exam.quetion=[]
+    this.exam.Quetion=[]
   }
   addQuetion(){
-    this.exam.quetion.push(this.quetion)
+    this.exam.Quetion.push(this.quetion)
   }
   deleteQuthion(quetion){
-    this.exam.quetion= this.exam.quetion.filter(q=>q!=quetion)
+    this.exam.Quetion= this.exam.Quetion.filter(q=>q!=quetion)
   }
   addExam(position){
+    console.log( this.exam)
     this.examservice.Add(this.exam).subscribe(res=>{
       this.toastrService.show(
         status || 'تمت الإضافة بنجاح',
