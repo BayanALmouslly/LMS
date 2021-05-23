@@ -1,7 +1,7 @@
 export class Exam {
-    Title
-    Date
-    quetion
+    Title:string
+    Date:Date
+    quetion:quetion[]
 }
 export class quetion {
     Question
@@ -9,6 +9,6 @@ export class quetion {
     Choise2
     Choise3
     Choise4
-    correct
+    Correct
 
 }

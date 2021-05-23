@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Exam, quetion } from '../../../model/exam/exam.model';
 
 @Component({
   selector: 'ngx-add-exam',
@@ -8,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class AddExamComponent implements OnInit {
 
   constructor() { }
-
+  exam: Exam = new Exam
+  quetion:quetion=new quetion
   ngOnInit(): void {
   }
-  CreateDate
+  addQuetion(){
+    this.exam.quetion.push(this.quetion)
+  }
 }
