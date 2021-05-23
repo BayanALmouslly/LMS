@@ -19,7 +19,6 @@ export class AdvertisementComponent implements OnInit {
     this.get()
   }
   addAdvertising(position) {
-   
     this.advertisingService.Add(this.advertising).subscribe(res => {
       this.toastrService.show(
         status || 'تمت الإضافة بنجاح',

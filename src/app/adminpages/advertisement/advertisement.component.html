@@ -51,7 +51,7 @@
             <td>{{ adver.name}}</td>
             <td>{{ adver.description}}</td>
             <td>{{ adver.link}}</td>
-            <td>{{ adver.createDate}}</td>
+            <td>{{ adver.createDate| date:"dd/MM/yyyy"}}</td>
             <td>
               <a (click)="delete(adver,'bottom-right')"><i class="fa fa-trash" style="color:rgb(0, 0, 49);"></i></a>
             </td>

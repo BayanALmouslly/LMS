@@ -24,7 +24,8 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
     NbUserModule,
     ngFormsModule,
     NbToastrModule,
-    NbSpinnerModule
+    NbSpinnerModule,
+    
   ]
 })
 export class ExamsModule { }
