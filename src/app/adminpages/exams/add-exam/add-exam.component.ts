@@ -29,6 +29,7 @@ export class AddExamComponent implements OnInit {
         status || 'تمت الإضافة بنجاح',
         `اضافة`,
         { position, status });
+        this.exam=new Exam
     })
   }
 }
