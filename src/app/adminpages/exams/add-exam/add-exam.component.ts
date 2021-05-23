@@ -15,13 +15,13 @@ export class AddExamComponent implements OnInit {
   exam: Exam = new Exam
   quetion:quetion=new quetion
   ngOnInit(): void {
-    this.exam.Quetion=[]
+    this.exam.Quetions=[]
   }
   addQuetion(){
-    this.exam.Quetion.push(this.quetion)
+    this.exam.Quetions.push(this.quetion)
   }
   deleteQuthion(quetion){
-    this.exam.Quetion= this.exam.Quetion.filter(q=>q!=quetion)
+    this.exam.Quetions= this.exam.Quetions.filter(q=>q!=quetion)
   }
   addExam(position){
     console.log( this.exam)

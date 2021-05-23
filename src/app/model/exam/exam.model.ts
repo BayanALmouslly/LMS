@@ -2,7 +2,7 @@ export class Exam {
     id
     Title:string
     Date:Date
-    Quetion:quetion[]
+    Quetions:quetion[]
 }
 export class quetion {
     Question
