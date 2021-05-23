@@ -59,7 +59,7 @@
                     </div>
                 </li>
                 <li class="list-group-item">
-                    <button class="btn btn-outline-primary" type="submit"> اضافة سؤال</button>
+                    <button class="btn btn-outline-primary" (click)="addQuetion()" type="submit"> اضافة سؤال</button>
 
                 </li>
             </ul>
@@ -78,27 +78,27 @@
 
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let exam of exam.quetion;index as i">
                         <td>
-
+{{i+1}}
                         </td>
                         <td>
-                            
+                           {{exam.Question}} 
                         </td>
                         <td>
-                            
+                            {{exam.Choise1}} 
                         </td>
                         <td>
-                            
+                            {{exam.Choise2}} 
                         </td>
                         <td>
-                            
+                            {{exam.Choise3}} 
                         </td>
                         <td>
-                            
+                            {{exam.Choise4}} 
                         </td>
                         <td>
-                            
+                            {{exam.Correct}} 
                         </td>
                         <td>
                             
