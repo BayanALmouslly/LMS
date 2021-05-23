@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NbToastrService } from '@nebular/theme';
 import { Exam, quetion } from '../../../model/exam/exam.model';
+import { ExamService } from '../../../service/exam.service';
 
 @Component({
   selector: 'ngx-add-exam',
@@ -8,12 +10,25 @@ import { Exam, quetion } from '../../../model/exam/exam.model';
 })
 export class AddExamComponent implements OnInit {
 
-  constructor() { }
+  constructor(private examservice:ExamService,
+    private toastrService: NbToastrService) { }
   exam: Exam = new Exam
   quetion:quetion=new quetion
   ngOnInit(): void {
+    this.exam.quetion=[]
   }
   addQuetion(){
     this.exam.quetion.push(this.quetion)
+  }
+  deleteQuthion(quetion){
+    this.exam.quetion= this.exam.quetion.filter(q=>q!=quetion)
+  }
+  addExam(position){
+    this.examservice.Add(this.exam).subscribe(res=>{
+      this.toastrService.show(
+        status || 'تمت الإضافة بنجاح',
+        `اضافة`,
+        { position, status });
+    })
   }
 }
