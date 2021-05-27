@@ -13,13 +13,19 @@ export class ShowExamsComponent implements OnInit {
   constructor(private examservvice:ExamService,
     private toastrService: NbToastrService) { }
 exams:Exam[]=[]
+questions:any[]=[]
   ngOnInit(): void {
     this.Get()
   }
 Get(){
   this.examservvice.Get().subscribe(res=>{
     this.exams=res
+    console.log(res)
   })
+}
+Questions(question){
+this.questions=[]
+this.questions=question
 }
 delete(exam,position){
   this.examservvice.Delete(exam.id).subscribe(res=>{
