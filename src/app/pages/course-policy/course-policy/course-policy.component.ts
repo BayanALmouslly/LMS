@@ -16,4 +16,8 @@ export class CoursePolicyComponent implements OnInit {
     this.router.navigate(['/pages/educationalunit']);
 
   }
+  CourseEvaluation(){
+    this.router.navigate(['/pages/CourseEvaluation/']);
+
+  }
 }
