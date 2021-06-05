@@ -18,7 +18,7 @@ export class AdvertisingComponent implements OnInit {
   get(){
     this.advertisingService.Get().subscribe(res=>{
       this.advertisings=res
-
+//
     })
   }
 }
