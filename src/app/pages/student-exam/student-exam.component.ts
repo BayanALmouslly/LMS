@@ -16,7 +16,7 @@ export class StudentExamComponent implements OnInit {
     this.enabledQuetions()
   }
   date: Date = new Date()
-  exam: Exam = new Exam()
+  exam: any 
   findExamToDay: boolean = false
   enabled: boolean = false
   GetCurrentExamForStudent() {
