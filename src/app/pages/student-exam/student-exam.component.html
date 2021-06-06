@@ -13,8 +13,17 @@
 
 <div class="card">
     <div class="card-body">
-        {{exam.title}}
-        وقت الاختبار : {{exam.date}}
+        <div style="text-align: center;">
+            <h4> {{exam.title}}</h4>   
+            <h4>
+                تاريخ الاختبار : {{exam.date| date:"dd/MM/yyyy"}}
+                </h4>
+                <h4>
+                وقت الاختبار : {{exam.date| date:"HH:mm:ss"}}
+            </h4>
+        </div>
+   
+      
         <div *ngIf="!findExamToDay">
             <ul class="list-group" *ngFor="let quetion of exam.quetions">
                 <li class="list-group-item">
