@@ -15,9 +15,11 @@ export class ExamService {
   Add(advertising){
     return this.http.post(this.api,advertising);
   }
-  update(advertising){
-    return this.http.put(this.api,advertising);
-  }
   Delete(id){
     return this.http.delete(this.api+id);
-  }}
+  }
+  GetCurrentExamForStudent(datetime){
+    return this.http.get(this.api+"GetCurrentExamForStudent",datetime);
+
+  }
+}

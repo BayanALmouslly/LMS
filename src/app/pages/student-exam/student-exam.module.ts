@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { StudentExamRoutingModule } from './student-exam-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NbAccordionModule, NbButtonModule, NbCardModule, NbListModule, NbRouteTabsetModule, NbStepperModule, NbTabsetModule, NbUserModule } from '@nebular/theme';
 
 
 @NgModule({
@@ -12,15 +11,6 @@ import { NbAccordionModule, NbButtonModule, NbCardModule, NbListModule, NbRouteT
     CommonModule,
     StudentExamRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    NbAccordionModule,
-    NbStepperModule,
-    NbButtonModule,
-    NbCardModule,
-    NbListModule,
-    NbRouteTabsetModule,
-    NbTabsetModule,
-    NbUserModule,
-  ],schemas:[CUSTOM_ELEMENTS_SCHEMA],
+ ],schemas:[CUSTOM_ELEMENTS_SCHEMA],
 })
 export class StudentExamModule { }

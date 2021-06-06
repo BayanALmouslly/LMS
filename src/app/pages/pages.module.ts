@@ -18,6 +18,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../login/auth.interceptor';
 import { StudentExamComponent } from './student-exam/student-exam.component';
 import { StudentExamModule } from './student-exam/student-exam.module';
+import { FormsModule as ngFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -34,6 +35,8 @@ import { StudentExamModule } from './student-exam/student-exam.module';
     HelpModule,
     MarksModule,
     ToolsModule,
+    StudentExamModule,
+    ngFormsModule
     
   ],
   declarations: [
