@@ -1,62 +1,65 @@
 <div class="card">
-<div class="card-body">
-    <div *ngIf="!findExamToDay">
-        <h1>لايوجد اختبار لهذا اليوم</h1>
-        <button class="btn btn-outline-primary" (click)="GetCurrentExamForStudent()">
-            تحديث
-        </button>
-    </div>
+    <div class="card-body">
+        <div *ngIf="!findExamToDay">
+            <h1>لايوجد اختبار لهذا اليوم</h1>
+            <button class="btn btn-outline-primary" (click)="GetCurrentExamForStudent()">
+                تحديث
+            </button>
+        </div>
 
-</div>
+    </div>
 </div>
 
 
 <div class="card">
     <div class="card-body">
+        {{exam.title}}
+        وقت الاختبار : {{exam.date}}
         <div *ngIf="!findExamToDay">
-            <ul class="list-group" *ngFor="let quetion of exam.Quetions">
+            <ul class="list-group" *ngFor="let quetion of exam.quetions">
                 <li class="list-group-item">
-                    السؤال :
-                    <input type="text" nbInput [(ngModel)]="quetion.Question" fullWidth  placeholder=" ">
+                    السؤال :{{quetion.question}}
                 </li>
                 <li class="list-group-item">
                     <div class="form-check">
-                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="1"  type="radio" name="flexRadioDefault" id="c">
+                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="1" type="radio"
+                            name="flexRadioDefault" id="c">
 
-                        <input type="text" [(ngModel)]="quetion.Choise1" nbInput fullWidth  placeholder="الإجابة الأولى ">
+                        {{quetion.choise1}}
                     </div>
                 </li>
                 <li class="list-group-item">
                     <div class="form-check">
-                        <input class="form-check-input"[(ngModel)]="quetion.C1"value="2"  type="radio" name="flexRadioDefault" id="c">
+                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="2" type="radio"
+                            name="flexRadioDefault" id="c">
 
-                        <input type="text" [(ngModel)]="quetion.Choise2" nbInput fullWidth  placeholder=" الإجابة الثانية">
+                       {{quetion.choise2}}
                     </div>
                 </li>
                 <li class="list-group-item">
                     <div class="form-check">
-                        <input class="form-check-input"[(ngModel)]="quetion.C1" value="3" type="radio" name="flexRadioDefault" id="c">
-                        <input type="text" [(ngModel)]="quetion.Choise3" nbInput fullWidth  placeholder="الإجابة الثالثة ">
+                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="3" type="radio"
+                            name="flexRadioDefault" id="c">
+                        {{quetion.choise3}}
                     </div>
                 </li>
                 <li class="list-group-item">
                     <div class="form-check">
-                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="4"  type="radio"  name="flexRadioDefault" id="c">
-                        <input type="text" [(ngModel)]="quetion.Choise4" nbInput fullWidth  placeholder="الإجابة الرابعة ">
+                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="4" type="radio"
+                            name="flexRadioDefault" id="c">
+                        {{quetion.choise4}}
                     </div>
                 </li>
                 <li class="list-group-item">
-                    <input type="number" [(ngModel)]="quetion.Time" nbInput  placeholder="وقت السؤال "
-                    name="CreateDate">
+                    <input type="number" [(ngModel)]="quetion.Time" nbInput placeholder="وقت السؤال " name="CreateDate">
                 </li>
                 <li class="list-group-item">
                     <button class="btn btn-outline-primary" (click)="addQuetion()" type="submit"> اضافة سؤال</button>
 
                 </li>
             </ul>
-  
+
         </div>
-    
+
     </div>
-    </div>
-   
+</div>

@@ -20,7 +20,7 @@ export class ExamService {
   }
   GetCurrentExamForStudent(datetime){
     console.log(datetime)
-    return this.http.get<any>(this.api+"GetCurrentExamForStudent",datetime);
+    return this.http.post(this.api+"GetCurrentExamForStudent",datetime);
 
   }
 }
