@@ -13,7 +13,7 @@ export class StudentExamComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetCurrentExamForStudent()
-    this.enabledQuetions()
+    //this.enabledQuetions()
   }
   date: Date = new Date()
   exam: any 

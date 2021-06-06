@@ -11,7 +11,7 @@
 </div>
 
 
-<div class="card">
+<div class="card" *ngIf="findExamToDay">
     <div class="card-body">
         <div style="text-align: center;">
             <h4> {{exam.title}}</h4>   
@@ -24,7 +24,7 @@
         </div>
    
       
-        <div *ngIf="!findExamToDay">
+        <div >
             <ul class="list-group" *ngFor="let quetion of exam.quetions">
                 <li class="list-group-item">
                     السؤال :{{quetion.question}}
