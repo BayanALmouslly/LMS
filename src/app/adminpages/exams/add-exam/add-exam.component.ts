@@ -30,7 +30,8 @@ export class AddExamComponent implements OnInit {
       this.quetion.Correct = this.quetion.Choise4
     if (!this.quetion.Choise1 || !this.quetion.Choise2
       || !this.quetion.Choise3 || !this.quetion.Choise4
-      || !this.quetion.Question || !this.quetion.Correct) {
+      || !this.quetion.Question || !this.quetion.Correct
+      || !this.quetion.Time) {
       this.toastrService.show(
         status || 'يجب ملئ جميع القيم',
         `خطأ`,
