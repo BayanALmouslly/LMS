@@ -5,7 +5,7 @@
             <div class="col-sm-4">
                 <div class="form-group">
                     <label for="inputFirstName" class="label">عنوان </label>
-                    <input type="text" [(ngModel)]="exam.Title" nbInput fullWidth id="inputFirstName" placeholder="">
+                    <input type="text" [(ngModel)]="exam.Title" nbInput fullWidth  placeholder="">
                 </div>
             </div>
             <div class="col-sm-4">
@@ -25,35 +25,38 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         السؤال :
-                        <input type="text" nbInput [(ngModel)]="quetion.Question" fullWidth id="inputFirstName" placeholder=" ">
+                        <input type="text" nbInput [(ngModel)]="quetion.Question" fullWidth  placeholder=" ">
                     </li>
                     <li class="list-group-item">
                         <div class="form-check">
-                            <input class="form-check-input" (click)="CorrectChoise(1)" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <input class="form-check-input" [(ngModel)]="quetion.C1" checked="{{quetion.C1}}"  type="checkbox"(ngModelChange)="CorrectChoise()" name="flexRadioDefault" id="c1">
     
-                            <input type="text" [(ngModel)]="quetion.Choise1" nbInput fullWidth id="inputFirstName" placeholder="الإجابة الأولى ">
+                            <input type="text" [(ngModel)]="quetion.Choise1" nbInput fullWidth  placeholder="الإجابة الأولى ">
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="form-check">
-                            <input class="form-check-input"(click)="CorrectChoise(2)" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <input class="form-check-input"[(ngModel)]="quetion.C2" type="checkbox"checked="{{quetion.C2}}"(ngModelChange)="CorrectChoise()" name="flexRadioDefault" id="c2">
     
-                            <input type="text" [(ngModel)]="quetion.Choise2" nbInput fullWidth id="inputFirstName" placeholder=" الإجابة الثانية">
+                            <input type="text" [(ngModel)]="quetion.Choise2" nbInput fullWidth  placeholder=" الإجابة الثانية">
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="form-check">
-                            <input class="form-check-input"(click)="CorrectChoise(3)" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <input type="text" [(ngModel)]="quetion.Choise3" nbInput fullWidth id="inputFirstName" placeholder="الإجابة الثالثة ">
+                            <input class="form-check-input"[(ngModel)]="quetion.C3"checked="{{quetion.C3}}" type="checkbox" (ngModelChange)="CorrectChoise()"name="flexRadioDefault" id="c3">
+                            <input type="text" [(ngModel)]="quetion.Choise3" nbInput fullWidth  placeholder="الإجابة الثالثة ">
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="form-check">
-                            <input class="form-check-input" (click)="CorrectChoise(4)"type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <input type="text" [(ngModel)]="quetion.Choise4" nbInput fullWidth id="inputFirstName" placeholder="الإجابة الرابعة ">
+                            <input class="form-check-input" [(ngModel)]="quetion.C4" checked="{{quetion.C4}}"type="checkbox" (ngModelChange)="CorrectChoise()" name="flexRadioDefault" id="c4">
+                            <input type="text" [(ngModel)]="quetion.Choise4" nbInput fullWidth  placeholder="الإجابة الرابعة ">
                         </div>
                     </li>
-                    
+                    <li class="list-group-item">
+                        <input type="time" [(ngModel)]="quetion.Time" nbInput fullWidth placeholder=" "
+                        name="CreateDate">
+                    </li>
                     <li class="list-group-item">
                         <button class="btn btn-outline-primary" (click)="addQuetion()" type="submit"> اضافة سؤال</button>
     
@@ -71,6 +74,7 @@
                     <th>الإجابة 3</th>
                     <th>الإجابة 4</th>
                     <th> الإجابة الصحيحة</th>
+                    <th> وقت السؤال </th>
                     <th> حذف</th>
 
                 </thead>
@@ -96,6 +100,9 @@
                         </td>
                         <td>
                             {{exam.Correct}}
+                        </td>
+                        <td>
+                            {{exam.Time}}
                         </td>
                         <td>
                             <a (click)="deleteQuthion(exam)"><i class="fa fa-trash"

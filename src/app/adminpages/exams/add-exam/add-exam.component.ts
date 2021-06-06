@@ -17,26 +17,49 @@ export class AddExamComponent implements OnInit {
   ngOnInit(): void {
     this.exam.Quetions = []
   }
-  CorrectChoise(index) {
-    switch (index) {
-      case 1:
-        this.quetion.Correct = this.quetion.Choise1
-        break
-      case 2:
-        this.quetion.Correct = this.quetion.Choise2
-        break
-      case 3:
-        this.quetion.Correct = this.quetion.Choise3
-        break
-      case 4:
-        this.quetion.Correct = this.quetion.Choise4
-        break
+  CorrectChoise() {
+    if (this.quetion.C1 == true) {
+      this.quetion.C2 = false
+      this.quetion.C3 = false
+      this.quetion.C4 = false
     }
-
+    if (this.quetion.C2 == true) {
+      this.quetion.C1 = false
+      this.quetion.C3 = false
+      this.quetion.C4 = false
+    }
+    if (this.quetion.C3 == true) {
+      this.quetion.C2 = false
+      this.quetion.C1 = false
+      this.quetion.C4 = false
+    }
+    if (this.quetion.C4 == true) {
+      this.quetion.C2 = false
+      this.quetion.C3 = false
+      this.quetion.C1 = false
+    }
   }
   addQuetion() {
+    if (this.quetion.C1 == true) {
+      this.quetion.Correct = this.quetion.Choise1
+    } else if (this.quetion.C2 == true)
+      this.quetion.Correct = this.quetion.Choise2
+    else if (this.quetion.C3 == true)
+      this.quetion.Correct = this.quetion.Choise3
+    else if (this.quetion.C4 == true)
+      this.quetion.Correct = this.quetion.Choise4
+    if (!this.quetion.Choise1 || !this.quetion.Choise2
+      || !this.quetion.Choise3 || !this.quetion.Choise4
+      || !this.quetion.Question || !this.quetion.Correct) {
+      this.toastrService.show(
+        status || 'يجب ملئ جميع القيم',
+        `خطأ`,
+        { status });
+      return
+    }
     this.exam.Quetions.push(this.quetion)
-    this.quetion=new quetion()
+    this.quetion = new quetion()
+    this.CorrectChoise()
   }
   deleteQuthion(quetion) {
     this.exam.Quetions = this.exam.Quetions.filter(q => q != quetion)
