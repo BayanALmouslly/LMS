@@ -65,7 +65,14 @@ export class AddExamComponent implements OnInit {
     this.exam.Quetions = this.exam.Quetions.filter(q => q != quetion)
   }
   addExam(position) {
-    console.log(this.exam)
+    if(!this.exam.Date||!this.exam.Title||this.exam.Quetions.length==0)
+    {
+      this.toastrService.show(
+        status || 'يجب ملئ جميع القيم',
+        `خطأ`,
+        { status });
+      return
+    }
     this.examservice.Add(this.exam).subscribe(res => {
       this.toastrService.show(
         status || 'تمت الإضافة بنجاح',
