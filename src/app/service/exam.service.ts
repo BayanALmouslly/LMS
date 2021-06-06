@@ -19,7 +19,8 @@ export class ExamService {
     return this.http.delete(this.api+id);
   }
   GetCurrentExamForStudent(datetime){
-    return this.http.get(this.api+"GetCurrentExamForStudent",datetime);
+    console.log(datetime)
+    return this.http.get<any>(this.api+"GetCurrentExamForStudent",datetime);
 
   }
 }
