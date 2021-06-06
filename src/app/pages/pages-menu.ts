@@ -103,7 +103,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'browser-outline',
     link: '/pages/educationalunit',
   },
-
+  {
+    title: ' الإختبارات ',
+    icon: 'browser-outline',
+    link: '/pages/exam',
+  },
   {
     title: 'المناقشات',
     icon: 'message-circle-outline',

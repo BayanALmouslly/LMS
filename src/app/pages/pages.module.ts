@@ -16,6 +16,8 @@ import { MarksModule } from './marks/marks.module';
 import { ToolsModule } from './tools/tools.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../login/auth.interceptor';
+import { StudentExamComponent } from './student-exam/student-exam.component';
+import { StudentExamModule } from './student-exam/student-exam.module';
 
 @NgModule({
   imports: [
@@ -36,6 +38,7 @@ import { AuthInterceptor } from '../login/auth.interceptor';
   ],
   declarations: [
     PagesComponent,
+    StudentExamComponent,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

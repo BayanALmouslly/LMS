@@ -25,6 +25,11 @@ const routes: Routes = [{
         .then(m => m.CourseDescriptionsModule),canActivate: [AuthGuard]
     },
     {
+      path: 'exam',
+      loadChildren: () => import('./student-exam/student-exam.module')
+        .then(m => m.StudentExamModule),canActivate: [AuthGuard]
+    },
+    {
       path: 'coursePolicy',
       loadChildren: () => import('./course-policy/course-policy.module')
         .then(m => m.CoursePolicyModule),canActivate: [AuthGuard]

@@ -6,11 +6,7 @@ export class Exam {
 }
 export class quetion {
     constructor(){
-        this.C1=false
-        this.C2=false
-        this.C3=false
-        this.C4=false
-
+       
     }
     Question
     Choise1
@@ -20,8 +16,6 @@ export class quetion {
     Correct
     Time
     C1
-    C2
-    C3
-    C4
+    
 
 }
