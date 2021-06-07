@@ -19,8 +19,10 @@ export class ExamService {
     return this.http.delete(this.api+id);
   }
   GetCurrentExamForStudent(datetime){
-    console.log(datetime)
     return this.http.post(this.api+"GetCurrentExamForStudent",datetime);
+  }
+  Answer(anser){
+    return this.http.post(this.api+"Answer",anser);
 
   }
 }

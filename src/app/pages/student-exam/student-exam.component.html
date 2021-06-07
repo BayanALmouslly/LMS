@@ -1,6 +1,6 @@
-<div class="card">
+<div class="card" *ngIf="!findExamToDay">
     <div class="card-body">
-        <div *ngIf="!findExamToDay">
+        <div>
             <h1>لايوجد اختبار لهذا اليوم</h1>
             <button class="btn btn-outline-primary" (click)="GetCurrentExamForStudent()">
                 تحديث
@@ -10,65 +10,73 @@
     </div>
 </div>
 
-
 <div class="card" *ngIf="findExamToDay">
     <div class="card-body">
         <div style="text-align: center;">
-            <h4> {{exam.title}}</h4>   
-            <h4>
-                تاريخ الاختبار : {{exam.date| date:"dd/MM/yyyy"}}
-                </h4>
-                <h4>
-                وقت الاختبار : {{exam.date| date:"HH:mm:ss"}}
-            </h4>
+            <h4> {{exam.title}}</h4>
+
+            <h5>
+               
+
+                وقت الاختبار {{exam.date| date:"HH:mm"}}
+                <div class="timer">
+                    <h4> Count down timer </h4>
+                    <span id="days"> {{daysToDday}} </span>Day(s)
+                    <span id="hours"> {{hoursToDday}} </span>Hrs 
+                    <span id="minutes"> {{minutesToDday}} </span>Min
+                    <span id="seconds"> {{secondsToDday}} </span>S
+                </div>
+            </h5>
         </div>
-   
-      
-        <div >
-            <ul class="list-group" *ngFor="let quetion of exam.quetions">
+
+
+        <div *ngFor="let quetion of exam.question;index as i">
+            <ul class="list-group" [hidden]="!quetion.enabled">
                 <li class="list-group-item">
                     السؤال :{{quetion.question}}
                 </li>
                 <li class="list-group-item">
                     <div class="form-check">
-                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="1" type="radio"
-                            name="flexRadioDefault" id="c">
+                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="{{quetion.choise1}}"
+                            type="radio" name="flexRadioDefault_{{i+1}}" id="{{i+1}}">
 
                         {{quetion.choise1}}
                     </div>
                 </li>
                 <li class="list-group-item">
                     <div class="form-check">
-                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="2" type="radio"
-                            name="flexRadioDefault" id="c">
+                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="{{quetion.choise2}}"
+                            type="radio" name="flexRadioDefault_{{i+1}}" id="{{i+1}}">
 
-                       {{quetion.choise2}}
+                        {{quetion.choise2}}
                     </div>
                 </li>
                 <li class="list-group-item">
                     <div class="form-check">
-                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="3" type="radio"
-                            name="flexRadioDefault" id="c">
+                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="{{quetion.choise3}}"
+                            type="radio" name="flexRadioDefault_{{i+1}}" id="{{i+1}}">
                         {{quetion.choise3}}
                     </div>
                 </li>
                 <li class="list-group-item">
                     <div class="form-check">
-                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="4" type="radio"
-                            name="flexRadioDefault" id="c">
+                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="{{quetion.choise4}}"
+                            type="radio" name="flexRadioDefault_{{i+1}}" id="{{i+1}}">
                         {{quetion.choise4}}
                     </div>
                 </li>
                 <li class="list-group-item">
-                    <input type="number" [(ngModel)]="quetion.Time" nbInput placeholder="وقت السؤال " name="CreateDate">
+                    وقت السؤال : {{quetion.time}}
                 </li>
                 <li class="list-group-item">
-                    <button class="btn btn-outline-primary" (click)="addQuetion()" type="submit"> اضافة سؤال</button>
+                    <button class="btn btn-outline-primary" (click)="addAnswer(quetion)" type="submit"> حفظ
+                        الإجابة</button>
 
                 </li>
             </ul>
 
         </div>
+        <button class="btn btn-outline-primary" (click)="addAnswers()" type="submit"> حفظ وارسال جميع الإجابات</button>
 
     </div>
 </div>
