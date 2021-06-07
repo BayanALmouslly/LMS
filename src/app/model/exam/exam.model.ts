@@ -3,6 +3,9 @@ export class Exam {
     Title:string
     Date:Date
     Quetions:quetion[]
+    title:string
+    date:Date
+    question:quetion[]
 }
 export class quetion {
     constructor(){
@@ -17,7 +20,13 @@ export class quetion {
     Time
     C1
     enabled
-    
+    question
+    choise1
+    choise2
+    choise3
+    choise4
+    correct
+    time
 
 }
 export class Answer{

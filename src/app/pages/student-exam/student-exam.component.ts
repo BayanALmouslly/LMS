@@ -35,12 +35,14 @@ export class StudentExamComponent implements OnInit, OnDestroy {
     var m = today.getMinutes();
     var s = today.getSeconds();
     var time = h + ":" + m + ":" + s
+    console.log({ Year: yyyy, Month: mm, Day: dd, Hour: h, Minit: m })
     this.examService.GetCurrentExamForStudent({ Year: yyyy, Month: mm, Day: dd, Hour: h, Minit: m }).subscribe(res => {
-      console.log(res)
       if (!res)
         this.findExamToDay = false
       else {
-        this.exam = res as any
+        console.log(res)
+        this.exam =res.examStudentDto as Exam
+        console.log(this.exam)
         this.findExamToDay = true
         this.exam.question.forEach(element => {
           element.enabled = true
