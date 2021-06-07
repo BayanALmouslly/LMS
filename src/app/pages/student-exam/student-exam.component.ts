@@ -19,7 +19,7 @@ export class StudentExamComponent implements OnInit, OnDestroy {
     .subscribe(x => { this.getTimeDifference(); });
   }
   date: Date = new Date()
-  exam: any
+  exam: Exam=new Exam
   findExamToDay: boolean = false
   enabled: boolean = false
   Answer: Answer = new Answer
@@ -37,11 +37,14 @@ export class StudentExamComponent implements OnInit, OnDestroy {
     var time = h + ":" + m + ":" + s
     console.log({ Year: yyyy, Month: mm, Day: dd, Hour: h, Minit: m })
     this.examService.GetCurrentExamForStudent({ Year: yyyy, Month: mm, Day: dd, Hour: h, Minit: m }).subscribe(res => {
+      console.log(res)
+
       if (!res)
         this.findExamToDay = false
       else {
         console.log(res)
         this.exam =res.examStudentDto as Exam
+        this.exam.question=res.questions
         console.log(this.exam)
         this.findExamToDay = true
         this.exam.question.forEach(element => {
@@ -49,7 +52,7 @@ export class StudentExamComponent implements OnInit, OnDestroy {
         });
         for(let i=0;i<this.exam.question.length;i++){
           for(let j=0;j<this.exam.question.length;j++){
-            this.exam.question[i]+=this.exam.question[j]
+            this.exam.question[i].time+=this.exam.question[j].time
           }
         }
         this.exam.question.forEach(element => {

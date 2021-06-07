@@ -30,8 +30,8 @@
         </div>
 
 
-        <div *ngFor="let quetion of exam.questions;index as i">
-            <ul class="list-group" [hidden]="!quetion.enabled">
+        <div *ngFor="let quetion of exam.question;index as i">
+            <ul class="list-group" *ngIf="quetion.enabled">
                 <li class="list-group-item">
                     السؤال :{{quetion.question}}
                 </li>
