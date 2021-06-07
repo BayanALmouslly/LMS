@@ -50,11 +50,11 @@ export class StudentExamComponent implements OnInit, OnDestroy {
         this.exam.question.forEach(element => {
           element.enabled = true
         });
-        for(let i=0;i<this.exam.question.length;i++){
-          for(let j=0;j<this.exam.question.length;j++){
-            this.exam.question[i].time+=this.exam.question[j].time
-          }
-        }
+        // for(let i=0;i<this.exam.question.length;i++){
+        //   for(let j=0;j<this.exam.question.length;j++){
+        //     this.exam.question[i].time+=this.exam.question[j].time
+        //   }
+        // }
         this.exam.question.forEach(element => {
           this.timeQuestion(element)
         });
