@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { StudentExamRoutingModule } from './student-exam-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TimeoutComponent } from './timeout/timeout.component';
 
 
 @NgModule({
-  declarations: [TimeoutComponent],
+  declarations: [],
   imports: [
     CommonModule,
     StudentExamRoutingModule,
