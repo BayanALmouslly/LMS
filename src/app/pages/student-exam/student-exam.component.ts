@@ -16,10 +16,10 @@ export class StudentExamComponent implements OnInit, OnDestroy {
     this.GetCurrentExamForStudent()
     //this.enabledQuetions()
     this.subscription = interval(1000)
-    .subscribe(x => { this.getTimeDifference(); });
+      .subscribe(x => { this.getTimeDifference(); });
   }
   date: Date = new Date()
-  exam: Exam=new Exam
+  exam: Exam = new Exam
   findExamToDay: boolean = false
   enabled: boolean = false
   Answer: Answer = new Answer
@@ -37,27 +37,34 @@ export class StudentExamComponent implements OnInit, OnDestroy {
     var time = h + ":" + m + ":" + s
     console.log({ Year: yyyy, Month: mm, Day: dd, Hour: h, Minit: m })
     this.examService.GetCurrentExamForStudent({ Year: yyyy, Month: mm, Day: dd, Hour: h, Minit: m }).subscribe(res => {
-      console.log(res)
-
       if (!res)
         this.findExamToDay = false
       else {
-        console.log(res)
-        this.exam =res.examStudentDto as Exam
-        this.exam.question=res.questions
+        this.exam = res.examStudentDto as Exam
+        this.exam.question = res.questions
         console.log(this.exam)
         this.findExamToDay = true
         this.exam.question.forEach(element => {
           element.enabled = true
         });
-        // for(let i=0;i<this.exam.question.length;i++){
-        //   for(let j=0;j<this.exam.question.length;j++){
-        //     this.exam.question[i].time+=this.exam.question[j].time
-        //   }
-        // }
-        this.exam.question.forEach(element => {
-          this.timeQuestion(element)
-        });
+        var time = 0
+        for (let i = 0; i < this.exam.question.length; i++) {
+          var now = new Date()
+         // var date = this.exam.date.getMinutes() - now.getMinutes()
+          console.log(this.exam.date.getMinutes())
+          // if (i == 0)
+          //   time = this.exam.question[i].time
+          // if (i != 0)
+          //   time += this.exam.question[i - 1].time
+          // if (date == 0) {
+          //   this.timeQuestion(this.exam.question[i], time)
+          // }
+          // if (date >= time) {
+          //   this.exam.question[i].enabled = false
+          // }
+
+        }
+
       }
     })
   }
@@ -67,8 +74,9 @@ export class StudentExamComponent implements OnInit, OnDestroy {
     if (this.date <= this.exam.Date)
       this.enabled = true
   }
-  timeQuestion(question) {
-    setTimeout(() => question.enabled = false, question.time * 60 * 1000)
+  timeQuestion(question, time) {
+    setTimeout(() => question.enabled = false, time * 60 * 1000)
+
   }
   addAnswer(question) {
     console.log(question)
@@ -84,36 +92,36 @@ export class StudentExamComponent implements OnInit, OnDestroy {
   }
   ////////////////////////////////////////////////////////////
   private subscription: Subscription;
-  
-    public dateNow = new Date();
-    public dDay = new Date('Jan 01 2021 00:00:00');
-    milliSecondsInASecond = 1000;
-    hoursInADay = 24;
-    minutesInAnHour = 60;
-    SecondsInAMinute  = 60;
 
-    public timeDifference;
-    public secondsToDday;
-    public minutesToDday;
-    public hoursToDday;
-    public daysToDday;
+  public dateNow = new Date();
+  public dDay = new Date('Jan 01 2021 00:00:00');
+  milliSecondsInASecond = 1000;
+  hoursInADay = 24;
+  minutesInAnHour = 60;
+  SecondsInAMinute = 60;
+
+  public timeDifference;
+  public secondsToDday;
+  public minutesToDday;
+  public hoursToDday;
+  public daysToDday;
 
 
-    private getTimeDifference () {
-        this.timeDifference = this.dDay.getTime() - new  Date().getTime();
-        this.allocateTimeUnits(this.timeDifference);
-    }
-
-  private allocateTimeUnits (timeDifference) {
-        this.secondsToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute);
-        this.minutesToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
-        this.hoursToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);
-        this.daysToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay));
+  private getTimeDifference() {
+    this.timeDifference = this.dDay.getTime() - new Date().getTime();
+    this.allocateTimeUnits(this.timeDifference);
   }
 
-    
+  private allocateTimeUnits(timeDifference) {
+    this.secondsToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute);
+    this.minutesToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
+    this.hoursToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);
+    this.daysToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay));
+  }
 
-   ngOnDestroy() {
-      this.subscription.unsubscribe();
-   }
+
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }
