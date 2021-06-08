@@ -63,7 +63,7 @@ export class StudentExamComponent implements OnInit, OnDestroy {
     })
   }
   get(){
-    
+
   }
   afterGetExam() {
     this.removequestiontimeout()
@@ -77,7 +77,7 @@ export class StudentExamComponent implements OnInit, OnDestroy {
     for (let i = 0; i < this.exam.question.length; i++) {
       this.exam.question[0].enabled = true
       if(i!=0)
-      console.log(this.exam.question[i-1].enabled)
+      console.log(this.exam.question[i+1])
       var now = new Date()
       let dateFormat = require('dateformat');
       if (dateFormat(now, "h") == dateFormat(this.exam.date, "h")) {
@@ -144,7 +144,7 @@ export class StudentExamComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       question.enabled = false
       // nextquestion.enabled = true
-    }, time * 60 * 1000)
+    }, 1 * 1 * 5000)
 
   }
   addAnswer(question) {
