@@ -62,6 +62,9 @@ export class StudentExamComponent implements OnInit, OnDestroy {
       }
     })
   }
+  get(){
+    
+  }
   afterGetExam() {
     this.removequestiontimeout()
     
@@ -72,7 +75,7 @@ export class StudentExamComponent implements OnInit, OnDestroy {
     //enabled question
     var time = 0
     for (let i = 0; i < this.exam.question.length; i++) {
-      this.exam.question[i].enabled = true
+      this.exam.question[0].enabled = true
       if(i!=0)
       console.log(this.exam.question[i-1].enabled)
       var now = new Date()
@@ -93,8 +96,8 @@ export class StudentExamComponent implements OnInit, OnDestroy {
         }
         if (date > time) {
           this.exam.question[i].enabled = false
-          // if(i<=this.exam.question.length)
-          // this.exam.question[i+1].enabled = true
+          if(i<this.exam.question.length)
+          this.exam.question[i+1].enabled = true
           
           console.log('time end q')
         }
@@ -107,8 +110,8 @@ export class StudentExamComponent implements OnInit, OnDestroy {
       else {
         console.log('end')
         this.exam.question[i].enabled = false
-        // if(i<=this.exam.question.length)
-        // this.exam.question[i+1].enabled = true
+        if(i<this.exam.question.length)
+        this.exam.question[i+1].enabled = true
         
       }
       console.log(date)
