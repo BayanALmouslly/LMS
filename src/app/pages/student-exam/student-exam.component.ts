@@ -95,8 +95,7 @@ export class StudentExamComponent implements OnInit, OnDestroy {
           this.exam.question[i].enabled = false
           // if(i<=this.exam.question.length)
           // this.exam.question[i+1].enabled = true
-          // this.exam.question=[...this.exam.question.filter(q=>q!=this.exam.question[i])]
-          // this.afterGetExam()
+          
           console.log('time end q')
         }
         if (date > this.timeExam) {
@@ -110,8 +109,7 @@ export class StudentExamComponent implements OnInit, OnDestroy {
         this.exam.question[i].enabled = false
         // if(i<=this.exam.question.length)
         // this.exam.question[i+1].enabled = true
-        // this.exam.question=[...this.exam.question.filter(q=>q!=this.exam.question[i])]
-        // this.afterGetExam()
+        
       }
       console.log(date)
     }
