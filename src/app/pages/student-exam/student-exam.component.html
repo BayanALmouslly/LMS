@@ -1,7 +1,9 @@
-<div class="card" *ngIf="!findExamToDay">
+<div class="card" *ngIf="noExamToDay||endTimeExam">
     <div class="card-body">
         <div>
-            <h1>لايوجد اختبار لهذا اليوم</h1>
+            <h1 *ngIf="noExamToDay">لايوجد اختبار لهذا اليوم</h1>
+            <h1 *ngIf="endTimeExam">انتهت مدة الإختبار</h1>
+
             <button class="btn btn-outline-primary" (click)="GetCurrentExamForStudent()">
                 تحديث
             </button>
@@ -26,6 +28,9 @@
                     <span id="minutes"> {{minutesToDday}} </span>Min
                     <span id="seconds"> {{secondsToDday}} </span>S
                 </div> -->
+            </h5>
+            <h5>
+                مدة الإختبار : {{timeExam}} دقائق
             </h5>
         </div>
 
@@ -76,6 +81,9 @@
             </ul>
 
         </div>
+        <button class="btn btn-outline-primary" (click)="GetCurrentExamForStudent()">
+            تحديث
+        </button>
         <button class="btn btn-outline-primary" (click)="addAnswers()" type="submit"> حفظ وارسال جميع الإجابات</button>
 
     </div>
