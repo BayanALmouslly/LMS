@@ -72,7 +72,9 @@ export class StudentExamComponent implements OnInit, OnDestroy {
     //enabled question
     var time = 0
     for (let i = 0; i < this.exam.question.length; i++) {
-      this.exam.question[0].enabled = true
+      this.exam.question[i].enabled = true
+      if(i!=0)
+      console.log(this.exam.question[i-1].enabled)
       var now = new Date()
       let dateFormat = require('dateformat');
       if (dateFormat(now, "h") == dateFormat(this.exam.date, "h")) {
@@ -91,6 +93,10 @@ export class StudentExamComponent implements OnInit, OnDestroy {
         }
         if (date > time) {
           this.exam.question[i].enabled = false
+          // if(i<=this.exam.question.length)
+          // this.exam.question[i+1].enabled = true
+          // this.exam.question=[...this.exam.question.filter(q=>q!=this.exam.question[i])]
+          // this.afterGetExam()
           console.log('time end q')
         }
         if (date > this.timeExam) {
@@ -102,6 +108,10 @@ export class StudentExamComponent implements OnInit, OnDestroy {
       else {
         console.log('end')
         this.exam.question[i].enabled = false
+        // if(i<=this.exam.question.length)
+        // this.exam.question[i+1].enabled = true
+        // this.exam.question=[...this.exam.question.filter(q=>q!=this.exam.question[i])]
+        // this.afterGetExam()
       }
       console.log(date)
     }
