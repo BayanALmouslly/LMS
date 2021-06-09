@@ -30,6 +30,11 @@ const routes: Routes = [{
         .then(m => m.StudentExamModule),canActivate: [AuthGuard]
     },
     {
+      path: 'homeworks',
+      loadChildren: () => import('./homeworks/homeworks.module')
+        .then(m => m.HomeworksModule),canActivate: [AuthGuard]
+    },
+    {
       path: 'coursePolicy',
       loadChildren: () => import('./course-policy/course-policy.module')
         .then(m => m.CoursePolicyModule),canActivate: [AuthGuard]

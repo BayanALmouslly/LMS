@@ -109,6 +109,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/exam',
   },
   {
+    title: ' الواجبات ',
+    icon: 'pie-chart-outline',
+    link: '/pages/homeworks',
+  },
+  {
     title: 'المناقشات',
     icon: 'message-circle-outline',
     link: '/pages/discussions',
