@@ -39,6 +39,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
   userLogin =JSON.parse (localStorage.getItem('login'))
+  name=this.userLogin.name
   userMenu = [{ title: 'تسجيل الخروج ', link: "/" }];
   constructor(private sidebarService: NbSidebarService,
     private menuService: NbMenuService,
@@ -50,6 +51,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    console.log(this.name)
     this.currentTheme = this.themeService.currentTheme;
     this.userService.getUsers()
       .pipe(takeUntil(this.destroy$))

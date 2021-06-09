@@ -215,18 +215,18 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //   //   },
   //   // ],
   // },
-  // {
-  //   title: 'الدعم والمساعدة',
-  //   icon: 'shuffle-2-outline',
-  //   link: '/pages/help',
+  {
+    title: 'الدعم والمساعدة',
+    icon: 'shuffle-2-outline',
+    link: '/pages/help',
 
-  //   // children: [
-  //   //   {
-  //   //     title: '404',
-  //   //     link: '/pages/miscellaneous/404',
-  //   //   },
-  //   // ],
-  // },
+    // children: [
+    //   {
+    //     title: '404',
+    //     link: '/pages/miscellaneous/404',
+    //   },
+    // ],
+  },
   // {
   //   title: 'الوحدات التعليمية ',
   //   icon: 'browser-outline',
