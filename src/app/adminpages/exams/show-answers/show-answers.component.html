@@ -1,0 +1,86 @@
+<nb-card style="direction: rtl;">
+    <nb-card-body>
+        <div class="row">
+            <div class="col-4">
+                <label for="exam" class="form-label" style="text-align: right;"> اختر اختبار</label>
+                <br>
+                <select style="width: 100%;" [(ngModel)]="examId"(ngModelChange)="GetAnswer()"
+                 class="form-select" name="exam">
+                  <option>اختر اختبار</option>
+                 <option *ngFor="let  adver of exams;" value="adver.id">{{adver.title}}</option>
+
+                </select>
+            </div>
+            <!-- <div class="col-4">
+                <button type="button" class="btn btn-outline-primary ">
+                    عرض </button>
+            </div> -->
+        </div>
+
+    </nb-card-body>
+</nb-card>
+<nb-card style="height: 500px;width: 100%;direction: rtl;">
+    <nb-card-header> عرض اجوبة الطلاب </nb-card-header>
+    <nb-card-body>
+        <div class="table-responsive">
+            <table class="table table-striped" style="direction: rtl;text-align: right;">
+                <thead class="table-info">
+                    <tr>
+                        <th>الطالب</th>
+                        <th>الأجوبة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let  adver of Answers;index as x">
+                        <td>{{ adver.studentName}}</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-primary " data-toggle="modal"
+                                data-target=".bd-example-modal-lg" (click)="Questions(adver.questions)">
+                                الأسئلة</button>
+
+                            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                                aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <table class="table">
+                                                    <thead>
+                                                        <th>ترقيم</th>
+                                                        <th>السؤال</th>
+                                                        <th> الإجابة </th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let exam of questions;index as i">
+                                                            <td>
+                                                                {{i+1}}
+                                                            </td>
+                                                            <td>
+                                                                {{exam.question}}
+                                                            </td>
+
+                                                            <td>
+                                                                {{exam.answer}}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </nb-card-body>
+</nb-card>

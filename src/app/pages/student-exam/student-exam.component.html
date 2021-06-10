@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<div class="card" *ngIf="findExamToDay">
+<div class="card"*ngIf="!noExamToDay" >
     <div class="card-body">
         <div style="text-align: center;">
             <h4> {{exam.title}}</h4>
@@ -33,48 +33,47 @@
                 مدة الإختبار : {{timeExam}} دقائق
             </h5>
         </div>
-
-
-        <div *ngFor="let quetion of exam.question;index as i">
-            <ul class="list-group" *ngIf="quetion.enabled">
+        <div>
+            
+            <ul class="list-group" *ngIf="currentQuestion!=undefined" >
                 <li class="list-group-item">
-                    السؤال :{{quetion.question}}
+                    السؤال :{{currentQuestion.question}}
                 </li>
                 <li class="list-group-item">
                     <div class="form-check">
-                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="{{quetion.choise1}}"
-                            type="radio" name="flexRadioDefault_{{i+1}}" id="{{i+1}}">
+                        <input class="form-check-input" [(ngModel)]="currentQuestion.C1" value="{{currentQuestion.choise1}}"
+                            type="radio" name="flexRadioDefault" id="ci">
 
-                        {{quetion.choise1}}
+                        {{currentQuestion.choise1}}
                     </div>
                 </li>
                 <li class="list-group-item">
                     <div class="form-check">
-                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="{{quetion.choise2}}"
-                            type="radio" name="flexRadioDefault_{{i+1}}" id="{{i+1}}">
+                        <input class="form-check-input" [(ngModel)]="currentQuestion.C1" value="{{currentQuestion.choise2}}"
+                            type="radio" name="flexRadioDefault" id="ci">
 
-                        {{quetion.choise2}}
+                        {{currentQuestion.choise2}}
                     </div>
                 </li>
                 <li class="list-group-item">
                     <div class="form-check">
-                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="{{quetion.choise3}}"
-                            type="radio" name="flexRadioDefault_{{i+1}}" id="{{i+1}}">
-                        {{quetion.choise3}}
+                        <input class="form-check-input" [(ngModel)]="currentQuestion.C1" value="{{currentQuestion.choise3}}"
+                            type="radio" name="flexRadioDefault" id="ci">
+                        {{currentQuestion.choise3}}
                     </div>
                 </li>
                 <li class="list-group-item">
                     <div class="form-check">
-                        <input class="form-check-input" [(ngModel)]="quetion.C1" value="{{quetion.choise4}}"
-                            type="radio" name="flexRadioDefault_{{i+1}}" id="{{i+1}}">
-                        {{quetion.choise4}}
+                        <input class="form-check-input" [(ngModel)]="currentQuestion.C1" value="{{currentQuestion.choise4}}"
+                            type="radio" name="flexRadioDefault" id="ci">
+                        {{currentQuestion.choise4}}
                     </div>
                 </li>
                 <li class="list-group-item">
-                    وقت السؤال : {{quetion.time}}
+                    وقت السؤال : {{currentQuestion.time}}
                 </li>
                 <li class="list-group-item">
-                    <button class="btn btn-outline-primary" (click)="addAnswer(quetion)" type="submit"> حفظ
+                    <button class="btn btn-outline-primary"  type="submit"> حفظ
                         الإجابة</button>
 
                 </li>

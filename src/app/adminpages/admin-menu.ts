@@ -25,6 +25,10 @@ export const admin_MENU_ITEMS: NbMenuItem[] = [
         title: 'عرض  الإختبارات',
         link: '/admin/exams',
       },
+      {
+        title: 'عرض  اجوبة الطلاب',
+        link: '/admin/exams/showanswer',
+      },
     ]
   },
 

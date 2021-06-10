@@ -35,6 +35,8 @@ export class ExamService {
   }
   Answer(anser){
     return this.http.post(this.api+"Answer",anser);
-
+  }
+  GetAnswers(idExam){
+    return this.http.get(this.api+"GetAnswers/"+idExam);
   }
 }

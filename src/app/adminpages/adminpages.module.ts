@@ -9,10 +9,11 @@ import { EducationalUnitsComponent } from './educational-units/educational-units
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../login/auth.interceptor';
+import { AdminHomeworkComponent } from './admin-homework/admin-homework.component';
 
 
 @NgModule({
-  declarations: [AdminpagesComponent, EducationalUnitsComponent, WelcomeComponent],
+  declarations: [AdminpagesComponent, EducationalUnitsComponent, WelcomeComponent, AdminHomeworkComponent],
   imports: [
     CommonModule,
     AdminpagesRoutingModule,
