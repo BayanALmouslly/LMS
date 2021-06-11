@@ -22,9 +22,10 @@ export class HomeworksComponent implements OnInit {
     this.files = this.files.filter(fi => fi != f)
   }
   sendFiles() {
-    if(this.files.length==0)return
+    if (this.files.length == 0) return
     this.homeworkservice.Add(this.files).subscribe(res => {
-
+      this.files = []
+      this.file = null
     })
   }
 }
