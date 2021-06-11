@@ -13,8 +13,11 @@
               <!-- <span class="upload__button" (click)="Add()">
                 + </span> -->
             </div>
-            <div >
-              <textarea nbInput fullWidth placeholder="ملاحظات" [(ngModel)]="file.Note"></textarea>
+            <div class="row" >
+              <div class="col-12">
+                <textarea nbInput style="width: 100%; height: 100px;" fullWidth placeholder="ملاحظات" [(ngModel)]="file.Note"></textarea>
+
+              </div>
 
             </div>
             <!-- <div class="uploaded uploaded--one" *ngFor="let f of files">
