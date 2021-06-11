@@ -16,8 +16,8 @@ export class StudentExamComponent implements OnInit {
   ngOnInit(): void {
     this.GetCurrentExamForStudent();
     this.Answers=[]
-    if(JSON.parse(localStorage.getItem('answers')))
-    this.Answers=JSON.parse(localStorage.getItem('answers'))
+    // if(JSON.parse(localStorage.getItem('answers')))
+    // this.Answers=JSON.parse(localStorage.getItem('answers'))
   }
   date: Date = new Date()
   exam: Exam = new Exam
