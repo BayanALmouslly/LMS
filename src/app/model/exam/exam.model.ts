@@ -11,6 +11,7 @@ export class quetion {
     constructor(){
        
     }
+    id
     Question
     Choise1
     Choise2

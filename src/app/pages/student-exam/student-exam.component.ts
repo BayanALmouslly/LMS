@@ -15,6 +15,9 @@ export class StudentExamComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetCurrentExamForStudent();
+    this.Answers=[]
+    if(JSON.parse(localStorage.getItem('answers')))
+    this.Answers=JSON.parse(localStorage.getItem('answers'))
   }
   date: Date = new Date()
   exam: Exam = new Exam
@@ -68,7 +71,7 @@ export class StudentExamComponent implements OnInit {
   }
   DeleteQuestionsByTime(stileTime) {
     stileTime = Math.abs(stileTime);
-    debugger;  
+    // debugger;  
     stileTime /= 60;
     while (stileTime > 1) {
       var question = this.copyFromExam.question[0];
@@ -101,13 +104,10 @@ export class StudentExamComponent implements OnInit {
       return;
     }
   }
-  StartExam() {
-    
+  StartExam() { 
     var question = this.copyFromExam.question[0];
-
     this.copyFromExam.question.splice(0, 1);
     this.ShowQuestion(question);
-
   }
   calcTime(exam) {
     var examTime = exam.date.split('T')[1].split(":");
@@ -116,108 +116,118 @@ export class StudentExamComponent implements OnInit {
     var time = (Number(today.getHours()) * 3600) + (Number(today.getMinutes() * 60)) + Number(today.getSeconds());
     return examTime - time;
   }
-  get() {
-
-  }
-  afterGetExam() {
-    this.removequestiontimeout();
-
-    this.enabledQuetions();
-  }
-  async enabledQuetions() {
-    //enabled question
-    var time = 0
-    for (let i = 0; i < this.exam.question.length; i++) {
-      this.exam.question[0].enabled = true
-      if (i != 0)
-        var now = new Date()
-      let dateFormat = require('dateformat');
-      if (dateFormat(now, "h") == dateFormat(this.exam.date, "h")) {
-        var date = dateFormat(now, "MM") - dateFormat(this.exam.date, "MM")
-        if (date < 0) this.exam.question[i].enabled = false
-        if (date >= 0) {
-          if (i == 0) {
-            time = this.exam.question[i].time
-            await this.timeQuestion(this.exam.question[i], this.exam.question[i + 1], time)
-          }
-          else
-            if (i != 0) {
-              time += this.exam.question[i - 1].time
-              await this.timeQuestion(this.exam.question[i], this.exam.question[i + 1], time)
-            }
-        }
-        this.exam.question[i].enabled = false
-        if (i < this.exam.question.length) {
-          console.log("hhhhhh");
-          console.log(i + 1);
-          console.log(this.exam.question);
-          console.log(this.exam.question[i + 1]);
-          this.exam.question[i + 1].enabled = true
-        }
-        if (date > time) {
-          this.exam.question[i].enabled = false
-          if (i < this.exam.question.length)
-            this.exam.question[i + 1].enabled = true
-
-        }
-        if (date > this.timeExam) {
-          this.findExamToDay = false
-          this.endTimeExam = true
-          return
-        }
-      }
-      else {
-        this.exam.question[i].enabled = false
-        if (i < this.exam.question.length)
-          this.exam.question[i + 1].enabled = true
-
-      }
-    }
-  }
-  removequestiontimeout() {
-    //remove question timeout
-    var timeout = 0
-    this.tempQ = [...this.exam.question]
-    this.exam.question.forEach(q => {
-      var now = new Date()
-      let dateFormat = require('dateformat');
-      if (dateFormat(now, "h") == dateFormat(this.exam.date, "h")) {
-        var date = dateFormat(now, "MM") - dateFormat(this.exam.date, "MM")
-        timeout += q.time
-        if (date > timeout) {
-          this.tempQ = [... this.tempQ.filter(q1 => q1 != q)]
-        }
-      }
-    })
-    this.exam.question = [...this.tempQ]
-  }
-  // enabledQuetions(question, nextquestion, time) {
-  //   this.date = new Date()
-  //   if (this.date <= this.exam.Date)
-  //     this.enabled = true
-  // }
-  async timeQuestion(question, nextquestion, time) {
-    console.log("timeQuestion");
-    await setTimeout(() => {
-      question.enabled = false
-      // nextquestion.enabled = true
-    }, 1 * 1 * 5000)
-
-  }
-  addAnswer(question) {
-    this.Answer.Id = question.id
-    this.Answer.Answer = question.C1
+  addAnswer() {
+    this.Answer= new Answer
+    localStorage.removeItem('answers')
+    console.log(localStorage.removeItem('answers'))
+    this.Answer.Id = this.currentQuestion.id
+    this.Answer.Answer = this.currentQuestion.C1
     this.Answers.push(this.Answer)
-    question.enabled = false
-    this.exam.question = [...this.exam.question.filter(q => q != question)]
-    this.afterGetExam()
+    localStorage.setItem('answers',JSON.stringify(this.Answers))
+    console.log(localStorage.removeItem('answers'))
+     this.GetQuestion()
   }
   addAnswers() {
+    console.log(this.Answers)
     this.examService.Answer(this.Answers).subscribe(res => {
+      this.Answers=[]
+      localStorage.removeItem('answers')
       this.exam = null
       this.findExamToDay = false
       this.endTimeExam = true
+    },err=>{
+    //  localStorage.removeItem('answers')
+
     })
   }
+  // get() {
+
+  // }
+  // afterGetExam() {
+  //   this.removequestiontimeout();
+
+  //   this.enabledQuetions();
+  // }
+  // async enabledQuetions() {
+  //   //enabled question
+  //   var time = 0
+  //   for (let i = 0; i < this.exam.question.length; i++) {
+  //     this.exam.question[0].enabled = true
+  //     if (i != 0)
+  //       var now = new Date()
+  //     let dateFormat = require('dateformat');
+  //     if (dateFormat(now, "h") == dateFormat(this.exam.date, "h")) {
+  //       var date = dateFormat(now, "MM") - dateFormat(this.exam.date, "MM")
+  //       if (date < 0) this.exam.question[i].enabled = false
+  //       if (date >= 0) {
+  //         if (i == 0) {
+  //           time = this.exam.question[i].time
+  //           await this.timeQuestion(this.exam.question[i], this.exam.question[i + 1], time)
+  //         }
+  //         else
+  //           if (i != 0) {
+  //             time += this.exam.question[i - 1].time
+  //             await this.timeQuestion(this.exam.question[i], this.exam.question[i + 1], time)
+  //           }
+  //       }
+  //       this.exam.question[i].enabled = false
+  //       if (i < this.exam.question.length) {
+  //         console.log("hhhhhh");
+  //         console.log(i + 1);
+  //         console.log(this.exam.question);
+  //         console.log(this.exam.question[i + 1]);
+  //         this.exam.question[i + 1].enabled = true
+  //       }
+  //       if (date > time) {
+  //         this.exam.question[i].enabled = false
+  //         if (i < this.exam.question.length)
+  //           this.exam.question[i + 1].enabled = true
+
+  //       }
+  //       if (date > this.timeExam) {
+  //         this.findExamToDay = false
+  //         this.endTimeExam = true
+  //         return
+  //       }
+  //     }
+  //     else {
+  //       this.exam.question[i].enabled = false
+  //       if (i < this.exam.question.length)
+  //         this.exam.question[i + 1].enabled = true
+
+  //     }
+  //   }
+  // }
+  // removequestiontimeout() {
+  //   //remove question timeout
+  //   var timeout = 0
+  //   this.tempQ = [...this.exam.question]
+  //   this.exam.question.forEach(q => {
+  //     var now = new Date()
+  //     let dateFormat = require('dateformat');
+  //     if (dateFormat(now, "h") == dateFormat(this.exam.date, "h")) {
+  //       var date = dateFormat(now, "MM") - dateFormat(this.exam.date, "MM")
+  //       timeout += q.time
+  //       if (date > timeout) {
+  //         this.tempQ = [... this.tempQ.filter(q1 => q1 != q)]
+  //       }
+  //     }
+  //   })
+  //   this.exam.question = [...this.tempQ]
+  // }
+  // // enabledQuetions(question, nextquestion, time) {
+  // //   this.date = new Date()
+  // //   if (this.date <= this.exam.Date)
+  // //     this.enabled = true
+  // // }
+  // async timeQuestion(question, nextquestion, time) {
+  //   console.log("timeQuestion");
+  //   await setTimeout(() => {
+  //     question.enabled = false
+  //     // nextquestion.enabled = true
+  //   }, 1 * 1 * 5000)
+
+  // }
+  
 
 }
