@@ -9,7 +9,7 @@
         <div id="FileUpload">
           <div class="wrapper">
             <div class="upload">
-              <input type="file" #fileInput id="fileInput" (change)="stageFile()"
+              <input type="file" #fileInput [(ngModel)]="file.File" id="fileInput" (change)="stageFile()"
                 accept="csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
               <!-- <span class="upload__button" (click)="Add()">
                 + </span> -->

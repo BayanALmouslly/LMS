@@ -53,16 +53,13 @@ export class StudentExamComponent implements OnInit {
         this.timeExam = this.copyFromExam.question.map(c => c.time).reduce((accumulator, currentValue) => accumulator + currentValue);
         var stileTime = this.calcTime(this.exam);
         var mstileTime = stileTime * 1000;
-        console.log(stileTime);
         if (stileTime > 0) {
           setTimeout(() => {
             this.StartExam();
           }, mstileTime);
         } else if (stileTime == 0) {
-          console.log('2');
           this.StartExam();
         } else {
-          console.log('3');
           this.DeleteQuestionsByTime(stileTime);
           this.GetQuestion();
 
@@ -77,19 +74,14 @@ export class StudentExamComponent implements OnInit {
     stileTime /= 60;
     while (stileTime > 1) {
       var question = this.copyFromExam.question[0];
-      console.log(question);
       if (question.time < stileTime) {
-        console.log('-----------------------');
-        console.log(this.copyFromExam.question);
         this.copyFromExam.question.splice(0, 1);
-        console.log(this.copyFromExam.question);
         stileTime -= question.time;
       }
     }
   }
   ShowQuestion(question) {
-    console.log(question);
-    console.log("---------------------------------------");
+   
     //this.currentQuestion =question;
     question.enabled = true;
     setTimeout(() => {
@@ -131,7 +123,6 @@ export class StudentExamComponent implements OnInit {
     this.GetQuestion()
   }
   addAnswers() {
-    console.log(this.Answers)
     if (this.currentQuestion.C1)
       this.addAnswer()
     this.examService.Answer(this.Answers).subscribe(res => {
@@ -145,94 +136,6 @@ export class StudentExamComponent implements OnInit {
 
     })
   }
-  // get() {
-
-  // }
-  // afterGetExam() {
-  //   this.removequestiontimeout();
-
-  //   this.enabledQuetions();
-  // }
-  // async enabledQuetions() {
-  //   //enabled question
-  //   var time = 0
-  //   for (let i = 0; i < this.exam.question.length; i++) {
-  //     this.exam.question[0].enabled = true
-  //     if (i != 0)
-  //       var now = new Date()
-  //     let dateFormat = require('dateformat');
-  //     if (dateFormat(now, "h") == dateFormat(this.exam.date, "h")) {
-  //       var date = dateFormat(now, "MM") - dateFormat(this.exam.date, "MM")
-  //       if (date < 0) this.exam.question[i].enabled = false
-  //       if (date >= 0) {
-  //         if (i == 0) {
-  //           time = this.exam.question[i].time
-  //           await this.timeQuestion(this.exam.question[i], this.exam.question[i + 1], time)
-  //         }
-  //         else
-  //           if (i != 0) {
-  //             time += this.exam.question[i - 1].time
-  //             await this.timeQuestion(this.exam.question[i], this.exam.question[i + 1], time)
-  //           }
-  //       }
-  //       this.exam.question[i].enabled = false
-  //       if (i < this.exam.question.length) {
-  //         console.log("hhhhhh");
-  //         console.log(i + 1);
-  //         console.log(this.exam.question);
-  //         console.log(this.exam.question[i + 1]);
-  //         this.exam.question[i + 1].enabled = true
-  //       }
-  //       if (date > time) {
-  //         this.exam.question[i].enabled = false
-  //         if (i < this.exam.question.length)
-  //           this.exam.question[i + 1].enabled = true
-
-  //       }
-  //       if (date > this.timeExam) {
-  //         this.findExamToDay = false
-  //         this.endTimeExam = true
-  //         return
-  //       }
-  //     }
-  //     else {
-  //       this.exam.question[i].enabled = false
-  //       if (i < this.exam.question.length)
-  //         this.exam.question[i + 1].enabled = true
-
-  //     }
-  //   }
-  // }
-  // removequestiontimeout() {
-  //   //remove question timeout
-  //   var timeout = 0
-  //   this.tempQ = [...this.exam.question]
-  //   this.exam.question.forEach(q => {
-  //     var now = new Date()
-  //     let dateFormat = require('dateformat');
-  //     if (dateFormat(now, "h") == dateFormat(this.exam.date, "h")) {
-  //       var date = dateFormat(now, "MM") - dateFormat(this.exam.date, "MM")
-  //       timeout += q.time
-  //       if (date > timeout) {
-  //         this.tempQ = [... this.tempQ.filter(q1 => q1 != q)]
-  //       }
-  //     }
-  //   })
-  //   this.exam.question = [...this.tempQ]
-  // }
-  // // enabledQuetions(question, nextquestion, time) {
-  // //   this.date = new Date()
-  // //   if (this.date <= this.exam.Date)
-  // //     this.enabled = true
-  // // }
-  // async timeQuestion(question, nextquestion, time) {
-  //   console.log("timeQuestion");
-  //   await setTimeout(() => {
-  //     question.enabled = false
-  //     // nextquestion.enabled = true
-  //   }, 1 * 1 * 5000)
-
-  // }
 
 
 }

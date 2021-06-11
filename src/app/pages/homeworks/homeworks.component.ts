@@ -39,9 +39,10 @@ export class HomeworksComponent implements OnInit {
     }
     this.file.UserId=this.userLogin.id
     this.loading=true
+    console.log(this.file)
     this.homeworkservice.Add(this.file).subscribe(res => {
       this.loading=false
-      this.fileInput=null
+     // this.fileInput=null
       // this.files = []
       this.file =new Homework
       this.toastrService.show(
@@ -49,6 +50,7 @@ export class HomeworksComponent implements OnInit {
         ``,
         { status });
     },err=>{
+      console.log(err)
       this.loading=false
 
     })
