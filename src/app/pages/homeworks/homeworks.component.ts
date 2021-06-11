@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NbToastrService } from '@nebular/theme';
+import { Homework } from '../../model/homework.model';
 import { HomeworkService } from '../../service/homework.service';
 
 @Component({
@@ -13,8 +14,9 @@ export class HomeworksComponent implements OnInit {
     private toastrService: NbToastrService) { }
 
   ngOnInit(): void {
+    this.file=new Homework
   }
-  file
+  file:Homework
   files: any[] = []
   Add() {
     this.files.push(this.file)
@@ -24,7 +26,7 @@ export class HomeworksComponent implements OnInit {
     this.files = this.files.filter(fi => fi != f)
   }
   sendFiles() {
-    if (!this.file) {
+    if (!this.file.File) {
       this.toastrService.show(
         status || 'يجب اختيار ملف ثم الضغط على زر الارسال',
         ``,
@@ -42,6 +44,6 @@ export class HomeworksComponent implements OnInit {
   }
   @ViewChild('fileInput') fileInput;
   public stageFile(): void {
-    this.file = this.fileInput.nativeElement.files[0];
+    this.file.File = this.fileInput.nativeElement.files[0];
   }
 }
