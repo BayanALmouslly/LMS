@@ -31,7 +31,11 @@ export const admin_MENU_ITEMS: NbMenuItem[] = [
       },
     ]
   },
-
+  {
+    title: 'الواجبات',
+    icon: 'keypad-outline',
+    link: '/admin/adminhomework',
+  },
   // {
   //   title: 'الوحدات التعليمية ',
   //   icon: 'browser-outline',

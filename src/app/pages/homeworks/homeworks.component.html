@@ -8,20 +8,24 @@
                <div id="FileUpload">
                 <div class="wrapper">
                   <div class="upload">
-                    <input type="file" name="download" value="اضغط هنا" class="upload__button">  <span class="upload__button">ارسال </span>
+                    <input type="file" [(ngModel)]="file" name="download" value="اضغط هنا" class="upload__button"> 
+                     <span class="upload__button" (click)="Add()">
+                      + </span>
                   </div>
-                  <div class="uploaded uploaded--one">
+                  <div class="uploaded uploaded--one" *ngFor="let f of files">
                     <i class="far fa-file-pdf"></i>
                     <div class="file">
                       <div class="file__name">
-                        <p></p>
+                        <p>{{f}}</p>
+                        <i class="fas fa-times" (click)="cancel(f)"></i>
                       </div>
                       <div class="progress">
                         <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width:100%"></div>
                       </div>
                     </div>
                   </div>
-                
+                  <span class="upload__button" (click)="sendFiles()">
+                    ارسال </span>
                 </div>
               </div>
             </div>

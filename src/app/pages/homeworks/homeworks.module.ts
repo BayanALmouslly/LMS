@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { HomeworksRoutingModule } from './homeworks-routing.module';
 import { HomeworksComponent } from './homeworks.component';
+import { FormsModule as ngFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [HomeworksComponent],
   imports: [
     CommonModule,
-    HomeworksRoutingModule
+    HomeworksRoutingModule,
+    ngFormsModule
   ]
 })
 export class HomeworksModule { }

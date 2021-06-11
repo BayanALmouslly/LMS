@@ -15,7 +15,7 @@ export class StudentExamComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetCurrentExamForStudent();
-    this.Answers=[]
+    this.Answers = []
     // if(JSON.parse(localStorage.getItem('answers')))
     // this.Answers=JSON.parse(localStorage.getItem('answers'))
   }
@@ -30,7 +30,7 @@ export class StudentExamComponent implements OnInit {
   timeExam = 0
   tempQ
   copyFromExam: Exam;
-  currentQuestion:quetion;
+  currentQuestion: quetion;
   GetCurrentExamForStudent() {
     this.date = new Date()
     var today = new Date();
@@ -43,6 +43,7 @@ export class StudentExamComponent implements OnInit {
     this.examService.GetCurrentExamForStudent({ Year: yyyy, Month: mm, Day: dd, Hour: h, Minit: m }).subscribe(res => {
       if (!res) {
         this.noExamToDay = true;
+        this.findExamToDay = false
       } else {
         this.noExamToDay = false;
         this.findExamToDay = true
@@ -64,6 +65,7 @@ export class StudentExamComponent implements OnInit {
           console.log('3');
           this.DeleteQuestionsByTime(stileTime);
           this.GetQuestion();
+
         }
       }
     });
@@ -87,7 +89,7 @@ export class StudentExamComponent implements OnInit {
   }
   ShowQuestion(question) {
     console.log(question);
-    console.log("---------------------------------------"); 
+    console.log("---------------------------------------");
     //this.currentQuestion =question;
     question.enabled = true;
     setTimeout(() => {
@@ -97,14 +99,17 @@ export class StudentExamComponent implements OnInit {
   }
   GetQuestion() {
     var question = this.copyFromExam.question[0];
-    this.currentQuestion =question;
+    this.currentQuestion = question;
     this.ShowQuestion(question);
     this.copyFromExam.question.splice(0, 1);
     if (this.copyFromExam.question.length == 0) {
+      // this.endTimeExam = true
+      // this.findExamToDay = false
+      // this.noExamToDay = false
       return;
     }
   }
-  StartExam() { 
+  StartExam() {
     var question = this.copyFromExam.question[0];
     this.copyFromExam.question.splice(0, 1);
     this.ShowQuestion(question);
@@ -117,26 +122,26 @@ export class StudentExamComponent implements OnInit {
     return examTime - time;
   }
   addAnswer() {
-    this.Answer= new Answer
+    this.Answer = new Answer
     localStorage.removeItem('answers')
     console.log(localStorage.removeItem('answers'))
     this.Answer.Id = this.currentQuestion.id
     this.Answer.Answer = this.currentQuestion.C1
     this.Answers.push(this.Answer)
-    localStorage.setItem('answers',JSON.stringify(this.Answers))
+    localStorage.setItem('answers', JSON.stringify(this.Answers))
     console.log(localStorage.removeItem('answers'))
-     this.GetQuestion()
+    this.GetQuestion()
   }
   addAnswers() {
     console.log(this.Answers)
     this.examService.Answer(this.Answers).subscribe(res => {
-      this.Answers=[]
+      this.Answers = []
       localStorage.removeItem('answers')
       this.exam = null
       this.findExamToDay = false
       this.endTimeExam = true
-    },err=>{
-    //  localStorage.removeItem('answers')
+    }, err => {
+      //  localStorage.removeItem('answers')
 
     })
   }
@@ -228,6 +233,6 @@ export class StudentExamComponent implements OnInit {
   //   }, 1 * 1 * 5000)
 
   // }
-  
+
 
 }

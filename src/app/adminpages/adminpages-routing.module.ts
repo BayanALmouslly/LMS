@@ -34,7 +34,11 @@ const routes: Routes = [
       loadChildren: () => import('./exams/exams.module')
         .then(m => m.ExamsModule), //canActivate: [AuthGuard]
     },
-    
+    {
+      path: 'adminhomework',
+      loadChildren: () => import('./admin-homework/admin-homework.module')
+        .then(m => m.AdminHomeworkModule), //canActivate: [AuthGuard]
+    },
   ],}
 ];
 
