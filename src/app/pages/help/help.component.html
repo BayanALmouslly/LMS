@@ -27,7 +27,7 @@
         <div class="col-lg-4 col-md-6">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-video"style="color: #ff689b;"></i></div>
-              <h4 class="title"><a  > ابدأ هنا </a></h4>
+              <h4 class="title"><a (click)="home()" > ابدأ هنا </a></h4>
   
               <p class="description">
                 وتحتوي على صفحة ترحيبية ، ومعلومات عن استاذ المقرر، توجيهات الى الطلاب للحصول على افضل مخرجات للتعلم، وصف موجز للمقرر، قناة يوتيوب تحتوي على فيديوهات تعليمية ، مهارات استخدام الحاسوب، التكنولوجيا الخاصة بالمقرر.
@@ -37,7 +37,7 @@
         <div class="col-lg-4 col-md-6">
           <div class="icon-box">
             <div class="icon"><i class="las la-book" style="color: #e9bf06;"></i></div>
-            <h4 class="title"><a  > توصيف المقرر</a></h4>
+            <h4 class="title"><a (click)="coursedesc()" > توصيف المقرر</a></h4>
             
             <p class="description">
               معلومات عن المقرر اسمه وعدد ساعاته وطريقة تدريسه والمرحلة التي تدرس به، اهداف المقرر العامة، قائمة المواد التعليمية من ملخص على شكل bdf والمراجع المطلوبة في المقرر.
@@ -48,7 +48,7 @@
         <div class="col-lg-4 col-md-6" data-wow-delay="0.1s">
           <div class="icon-box">
             <div class="icon"><i class="fas fa-tasks" style="color: #3fcdc7;"></i></div>
-            <h4 class="title"><a  > سياسة المقرر</a></h4>
+            <h4 class="title"><a (click)="coursePolicy()" > سياسة المقرر</a></h4>
            
             <p class="description">
               
@@ -59,7 +59,7 @@
         <div class="col-lg-4 col-md-6" data-wow-delay="0.2s">
           <div class="icon-box">
             <div class="icon"><i class="las la-file-alt" style="color: #145de6;"></i></div>
-            <h4 class="title"><a  >الإعلانات </a></h4>
+            <h4 class="title"><a (click)="advertising()" >الإعلانات </a></h4>
            
             <p class="description">
               
@@ -71,7 +71,7 @@
         <div class="col-lg-4 col-md-6">
             <div class="icon-box">
               <div class="icon"><i class="las la-book" style="color: #e9bf06;"></i></div>
-              <h4 class="title"><a  > الوحدات التعليمية</a></h4>
+              <h4 class="title"><a (click)="educationalunit()" > الوحدات التعليمية</a></h4>
               
               <p class="description">
                 
@@ -79,22 +79,33 @@
               </p>
             </div>
           </div>
-<!--     
+    
           <div class="col-lg-4 col-md-6" data-wow-delay="0.1s">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-tasks" style="color: #3fcdc7;"></i></div>
-              <h4 class="title"><a  > الإختبارات</a></h4>
+              <h4 class="title"><a (click)="exam()" > الإختبارات</a></h4>
              
               <p class="description">
                 
                 <br>
               </p>
             </div>
-          </div> -->
+          </div>
+              <div class="col-lg-4 col-md-6" data-wow-delay="0.2s">
+            <div class="icon-box">
+              <div class="icon"><i class="las la-file-alt" style="color: #145de6;"></i></div>
+              <h4 class="title"><a (click)="homeworks()" >الواجبات   </a></h4>
+             
+              <p class="description">
+                
+                <br>
+              </p>         
+           </div>
+          </div>
           <div class="col-lg-4 col-md-6" data-wow-delay="0.1s">
             <div class="icon-box">
               <div class="icon"><i class="las la-tachometer-alt" style="color:#f7a800;"></i></div>
-              <h4 class="title"><a  >المناقشات  </a></h4>
+              <h4 class="title"><a (click)="discussions()" >المناقشات  </a></h4>
              
               <p class="description">
                 
@@ -106,7 +117,7 @@
           <div class="col-lg-4 col-md-6" data-wow-delay="0.2s">
             <div class="icon-box">
               <div class="icon"><i class="las la-globe-americas" style="color: #d6ff22;"></i></div>
-              <h4 class="title"><a  >تقييمات المقرر  </a></h4>
+              <h4 class="title"><a (click)="CourseEvaluation()" >تقييمات المقرر  </a></h4>
              
               <p class="description">
                 
@@ -114,21 +125,11 @@
               </p>        
               </div>
           </div>
-          <!-- <div class="col-lg-4 col-md-6" data-wow-delay="0.2s">
-            <div class="icon-box">
-              <div class="icon"><i class="las la-file-alt" style="color: #145de6;"></i></div>
-              <h4 class="title"><a  >رسائل المقرر  </a></h4>
-             
-              <p class="description">
-                
-                <br>
-              </p>         
-           </div>
-          </div> -->
+      
           <div class="col-lg-4 col-md-6">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-video"style="color: #ff689b;"></i></div>
-              <h4 class="title"><a  > الدعم والمساعدة </a></h4>
+              <h4 class="title"><a (click)="help()" > الدعم والمساعدة </a></h4>
   
               <p class="description">
                 
@@ -137,29 +138,24 @@
               </p>
             </div>
           </div>
-      </div>
-     
-      <div class="row">
-     
-        <div class="col-lg-4 col-md-6">
-          <div class="icon-box">
-            <div class="icon"><i class="fab fa-google red font-large-2 float-right"></i>
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <div class="icon"><i class="fab fa-google red font-large-2 float-right"></i>
+              </div>
+              <h4 class="title"><a href="https://www.google.com/" > Google </a></h4>
+              
+              <p class="description">
+                للبحث عن اي معلومة انقر على الرابط في الأسفل 
+                <br>
+                <a href="https://www.google.com/">
+                  الذهاب الى Google 
+                </a>
+              </p>
             </div>
-            <h4 class="title"><a  > Google </a></h4>
-            
-            <p class="description">
-              للبحث عن اي معلومة انقر على الرابط في الأسفل 
-              <br>
-              <a href="https://www.google.com/">
-                الذهاب الى Google 
-              </a>
-            </p>
           </div>
-        </div>
-  
-        
-       
       </div>
+     
+   
      
     </div>
   </section><!-- End Services Section -->
