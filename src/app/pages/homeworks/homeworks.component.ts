@@ -12,9 +12,11 @@ export class HomeworksComponent implements OnInit {
 
   constructor(private homeworkservice: HomeworkService,
     private toastrService: NbToastrService) { }
+    userLogin =JSON.parse (localStorage.getItem('login'))
 
   ngOnInit(): void {
     this.file=new Homework
+    console.log(this.userLogin)
   }
   file:Homework
   files: any[] = []
@@ -33,6 +35,7 @@ export class HomeworksComponent implements OnInit {
         { status });
       return
     }
+    this.file.UserId=this.userLogin.id
     this.homeworkservice.Add(this.file).subscribe(res => {
       // this.files = []
       this.file = null

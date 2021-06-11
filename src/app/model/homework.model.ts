@@ -4,4 +4,5 @@ export class Homework {
     homework
     Note
     File
+    UserId
 }
