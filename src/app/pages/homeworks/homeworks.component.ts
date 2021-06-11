@@ -41,6 +41,7 @@ export class HomeworksComponent implements OnInit {
     this.loading=true
     this.homeworkservice.Add(this.file).subscribe(res => {
       this.loading=false
+      this.fileInput=null
       // this.files = []
       this.file =new Homework
       this.toastrService.show(
