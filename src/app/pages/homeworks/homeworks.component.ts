@@ -27,6 +27,8 @@ export class HomeworksComponent implements OnInit {
   cancel(f) {
     this.files = this.files.filter(fi => fi != f)
   }
+  loading = false;
+
   sendFiles() {
     if (!this.file.File) {
       this.toastrService.show(
@@ -36,13 +38,18 @@ export class HomeworksComponent implements OnInit {
       return
     }
     this.file.UserId=this.userLogin.id
+    this.loading=true
     this.homeworkservice.Add(this.file).subscribe(res => {
+      this.loading=false
       // this.files = []
-      this.file = null
+      this.file =new Homework
       this.toastrService.show(
         status || 'تم ارسال الملف بنجاح',
         ``,
         { status });
+    },err=>{
+      this.loading=false
+
     })
   }
   @ViewChild('fileInput') fileInput;

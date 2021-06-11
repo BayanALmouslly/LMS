@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HomeworksRoutingModule } from './homeworks-routing.module';
 import { HomeworksComponent } from './homeworks.component';
 import { FormsModule as ngFormsModule } from '@angular/forms';
+import { NbSpinnerModule } from '@nebular/theme';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     HomeworksRoutingModule,
-    ngFormsModule
+    ngFormsModule,
+    NbSpinnerModule
+
   ]
 })
 export class HomeworksModule { }

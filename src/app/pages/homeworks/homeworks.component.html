@@ -3,8 +3,9 @@
     <div class="card">
       <div class="card-body" style="text-align: center;">
         <h3>الواجبات </h3>
-
-        <h5>ادراج الواجب</h5>
+        <h6 class="text-center mb-4" [nbSpinner]="loading" nbSpinnerStatus="info" nbSpinnerSize="giant">
+        ادراج الواجب  
+       
         <div id="FileUpload">
           <div class="wrapper">
             <div class="upload">
@@ -36,7 +37,7 @@
             <button class="upload__button" (click)="sendFiles()">
               ارسال </button>
           </div>
-        </div>
+        </div> </h6>
       </div>
     </div>
   </div>
