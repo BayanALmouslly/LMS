@@ -188,22 +188,22 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //   //   },
   //   // ],
   // },
-  {
-    title: 'رسائل المقرر',
-    icon: 'text-outline',
-    link: '/pages/CourseMessage',
+  // {
+  //   title: 'رسائل المقرر',
+  //   icon: 'text-outline',
+  //   link: '/pages/CourseMessage',
 
-    // children: [
-    //   {
-    //     title: 'TinyMCE',
-    //     link: '/pages/editors/tinymce',
-    //   },
-    //   {
-    //     title: 'CKEditor',
-    //     link: '/pages/editors/ckeditor',
-    //   },
-    // ],
-  },
+  //   // children: [
+  //   //   {
+  //   //     title: 'TinyMCE',
+  //   //     link: '/pages/editors/tinymce',
+  //   //   },
+  //   //   {
+  //   //     title: 'CKEditor',
+  //   //     link: '/pages/editors/ckeditor',
+  //   //   },
+  //   // ],
+  // },
   // {
   //   title: 'الأدوات',
   //   icon: 'grid-outline',
