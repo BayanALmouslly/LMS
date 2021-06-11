@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.prod';
 
@@ -7,13 +7,16 @@ import { environment } from '../../environments/environment.prod';
 })
 export class HomeworkService {
 
-  api=environment.baseUrl+"api/homework/"
+  api=environment.baseUrl+"api/HomeWork/"
   constructor(private http: HttpClient) { }
   Get() {
     return this.http.get<any>(this.api);
   }
-  Add(advertising){
-    return this.http.post(this.api,advertising);
-  }
+  Add(file){
+    let  formData:FormData=new FormData();
+    formData.append("Attachemnt",file,file.name);
+    const headers = new HttpHeaders().append('Content-Disposition', 'multipart/form-data');
+   return this.http.post(this.api,formData);
+    }
  
 }

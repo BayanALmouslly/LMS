@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NbToastrService } from '@nebular/theme';
 import { HomeworkService } from '../../service/homework.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { HomeworkService } from '../../service/homework.service';
 })
 export class HomeworksComponent implements OnInit {
 
-  constructor(private homeworkservice: HomeworkService) { }
+  constructor(private homeworkservice: HomeworkService,
+    private toastrService: NbToastrService) { }
 
   ngOnInit(): void {
   }
@@ -22,10 +24,24 @@ export class HomeworksComponent implements OnInit {
     this.files = this.files.filter(fi => fi != f)
   }
   sendFiles() {
-    if (this.files.length == 0) return
-    this.homeworkservice.Add(this.files).subscribe(res => {
-      this.files = []
+    if (!this.file) {
+      this.toastrService.show(
+        status || 'يجب اختيار ملف ثم الضغط على زر الارسال',
+        ``,
+        { status });
+      return
+    }
+    this.homeworkservice.Add(this.file).subscribe(res => {
+      // this.files = []
       this.file = null
+      this.toastrService.show(
+        status || 'تم ارسال الملف بنجاح',
+        ``,
+        { status });
     })
+  }
+  @ViewChild('fileInput') fileInput;
+  public stageFile(): void {
+    this.file = this.fileInput.nativeElement.files[0];
   }
 }

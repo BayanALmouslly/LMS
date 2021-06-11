@@ -16,8 +16,8 @@ export class StudentExamComponent implements OnInit {
   ngOnInit(): void {
     this.GetCurrentExamForStudent();
     this.Answers = []
-    // if(JSON.parse(localStorage.getItem('answers')))
-    // this.Answers=JSON.parse(localStorage.getItem('answers'))
+    if (JSON.parse(localStorage.getItem('answers')))
+      this.Answers = JSON.parse(localStorage.getItem('answers'))
   }
   date: Date = new Date()
   exam: Exam = new Exam
@@ -124,16 +124,16 @@ export class StudentExamComponent implements OnInit {
   addAnswer() {
     this.Answer = new Answer
     localStorage.removeItem('answers')
-    console.log(localStorage.removeItem('answers'))
     this.Answer.Id = this.currentQuestion.id
     this.Answer.Answer = this.currentQuestion.C1
     this.Answers.push(this.Answer)
     localStorage.setItem('answers', JSON.stringify(this.Answers))
-    console.log(localStorage.removeItem('answers'))
     this.GetQuestion()
   }
   addAnswers() {
     console.log(this.Answers)
+    if (this.currentQuestion.C1)
+      this.addAnswer()
     this.examService.Answer(this.Answers).subscribe(res => {
       this.Answers = []
       localStorage.removeItem('answers')
