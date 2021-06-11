@@ -14,7 +14,9 @@ export class HomeworkService {
   }
   Add(file){
     let  formData:FormData=new FormData();
-    formData.append("Attachemnt",file,file.name);
+    formData.append("Note",file.Note);
+    formData.append("File",file.File);
+
     const headers = new HttpHeaders().append('Content-Disposition', 'multipart/form-data');
    return this.http.post(this.api,formData);
     }
