@@ -33,4 +33,5 @@ export class quetion {
 export class Answer{
     Id
     Answer
+    UserId
 }

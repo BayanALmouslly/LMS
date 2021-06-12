@@ -73,17 +73,21 @@
                     وقت السؤال : {{currentQuestion.time}}
                 </li>
                 <li class="list-group-item">
-                    <button class="btn btn-outline-primary" (click)="addAnswer()"  type="submit"> حفظ
+                    <button class="btn btn-outline-primary" (click)="addAnswerBtn()"  type="submit"> حفظ
                         الإجابة</button>
 
                 </li>
             </ul>
 
         </div>
-        <button class="btn btn-outline-primary" (click)="GetCurrentExamForStudent()">
+        <button class="btn btn-outline-primary" (click)="GetCurrentExamForStudent()" *ngIf="noExamToDay||endTimeExam">
             تحديث
         </button>
-        <button class="btn btn-outline-primary" (click)="addAnswers()" type="submit"> حفظ وارسال جميع الإجابات</button>
+
+        <button class="btn btn-outline-primary" (click)="Log()">
+            طباعة
+        </button>
+        <!-- <button class="btn btn-outline-primary" (click)="addAnswers()" type="submit"> حفظ وارسال جميع الإجابات</button> -->
 
     </div>
 </div>

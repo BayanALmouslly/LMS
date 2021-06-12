@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { QueueScheduler } from 'rxjs/internal/scheduler/QueueScheduler';
 import { Answer, Exam, quetion } from '../../model/exam/exam.model';
 import { ExamService } from '../../service/exam.service';
@@ -16,8 +17,8 @@ export class StudentExamComponent implements OnInit {
   ngOnInit(): void {
     this.GetCurrentExamForStudent();
     this.Answers = []
-    if (JSON.parse(localStorage.getItem('answers')))
-      this.Answers = JSON.parse(localStorage.getItem('answers'))
+    // if (JSON.parse(localStorage.getItem('answers')))
+    //   this.Answers = JSON.parse(localStorage.getItem('answers'))
   }
   date: Date = new Date()
   exam: Exam = new Exam
@@ -31,6 +32,8 @@ export class StudentExamComponent implements OnInit {
   tempQ
   copyFromExam: Exam;
   currentQuestion: quetion;
+  currentQuestionTimeOut;
+  userLogin = JSON.parse(localStorage.getItem('login'))
   GetCurrentExamForStudent() {
     this.date = new Date()
     var today = new Date();
@@ -40,7 +43,9 @@ export class StudentExamComponent implements OnInit {
     var h = today.getHours();
     var m = today.getMinutes();
     // var s = today.getSeconds();
-    this.examService.GetCurrentExamForStudent({ Year: yyyy, Month: mm, Day: dd, Hour: h, Minit: m }).subscribe(res => {
+    this.userLogin = JSON.parse(localStorage.getItem('login'))
+    console.log(this.userLogin.id);
+    this.examService.GetCurrentExamForStudent({ Year: yyyy, Month: mm, Day: dd, Hour: h, Minit: m, UserId: this.userLogin.id }).subscribe(res => {
       if (!res) {
         this.noExamToDay = true;
         this.findExamToDay = false
@@ -52,7 +57,9 @@ export class StudentExamComponent implements OnInit {
         this.copyFromExam = { ...this.exam };
         this.timeExam = this.copyFromExam.question.map(c => c.time).reduce((accumulator, currentValue) => accumulator + currentValue);
         var stileTime = this.calcTime(this.exam);
+        console.log("stileTime: " + stileTime);
         var mstileTime = stileTime * 1000;
+
         if (stileTime > 0) {
           setTimeout(() => {
             this.StartExam();
@@ -65,6 +72,11 @@ export class StudentExamComponent implements OnInit {
 
         }
       }
+    }, err => {
+      
+      this.noExamToDay = false;
+      this.findExamToDay = false;
+      this.endTimeExam=true;
     });
 
   }
@@ -80,24 +92,36 @@ export class StudentExamComponent implements OnInit {
       }
     }
   }
+
   ShowQuestion(question) {
-   
-    //this.currentQuestion =question;
-    question.enabled = true;
-    setTimeout(() => {
-      question.enabled = false;
+
+    this.currentQuestion = question;
+    this.currentQuestionTimeOut = setTimeout(() => {
+      //question.enabled = false;
+      this.addAnswer();
       this.GetQuestion();
+      // if (this.currentQuestion != undefined) {
+      //   console.log(this.currentQuestion);
+      //   this.addAnswer();
+      // }else
+      // this.GetQuestion();
     }, question.time * 60 * 1000);
   }
   GetQuestion() {
+    if (this.copyFromExam.question.length == 0) {
+      console.log(this.Answers);
+      this.endTimeExam = true
+      this.findExamToDay = false
+      this.noExamToDay = false
+      this.postAnser();
+      return;
+    }
     var question = this.copyFromExam.question[0];
-    this.currentQuestion = question;
+    //this.currentQuestion = question;
     this.ShowQuestion(question);
     this.copyFromExam.question.splice(0, 1);
     if (this.copyFromExam.question.length == 0) {
-      // this.endTimeExam = true
-      // this.findExamToDay = false
-      // this.noExamToDay = false
+
       return;
     }
   }
@@ -115,19 +139,37 @@ export class StudentExamComponent implements OnInit {
   }
   addAnswer() {
     this.Answer = new Answer
-    localStorage.removeItem('answers')
-    this.Answer.Id = this.currentQuestion.id
-    this.Answer.Answer = this.currentQuestion.C1
-    this.Answers.push(this.Answer)
-    localStorage.setItem('answers', JSON.stringify(this.Answers))
+    //localStorage.removeItem('answers')
+    if (this.currentQuestion.C1 != "") {
+      this.Answer.Id = this.currentQuestion.id
+      this.Answer.Answer = this.currentQuestion.C1
+      this.Answers.push(this.Answer);
+    }
+    //clearTimeout(this.currentQuestionTimeOut);
+    this.currentQuestion = undefined;
+    //  this.GetQuestion()
+  }
+  addAnswerBtn() {
+    this.Answer = new Answer
+    //localStorage.removeItem('answers')
+    if (this.currentQuestion.C1 != "") {
+      this.Answer.Id = this.currentQuestion.id
+      this.Answer.Answer = this.currentQuestion.C1
+      this.Answers.push(this.Answer);
+
+    }
+    clearTimeout(this.currentQuestionTimeOut);
+    this.currentQuestion = undefined;
     this.GetQuestion()
   }
-  addAnswers() {
-    if (this.currentQuestion.C1)
-      this.addAnswer()
+  postAnser() {
+
+    this.Answers.forEach(c => {
+      c.UserId = this.userLogin.id;
+    });
     this.examService.Answer(this.Answers).subscribe(res => {
       this.Answers = []
-      localStorage.removeItem('answers')
+      //localStorage.removeItem('answers')
       this.exam = null
       this.findExamToDay = false
       this.endTimeExam = true
@@ -136,6 +178,7 @@ export class StudentExamComponent implements OnInit {
 
     })
   }
-
-
+  Log() {
+    console.log(this.Answers);
+  }
 }

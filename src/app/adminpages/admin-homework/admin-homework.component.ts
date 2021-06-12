@@ -17,6 +17,7 @@ export class AdminHomeworkComponent implements OnInit {
   questions: any[] = []
   Homeworks:Homework[]=[]
   ngOnInit(): void {
+    this.Get();
   }
  
   Questions(question) {
@@ -25,6 +26,7 @@ export class AdminHomeworkComponent implements OnInit {
   }
   Get() {
     this.homeworkservvice.Get().subscribe(res => {
+      console.log(res);
       this.Homeworks = res as Homework[]
     })
   }

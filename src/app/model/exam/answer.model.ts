@@ -8,3 +8,10 @@ export class getquestions {
     question: string
     answer: string
 }
+export class ShowAsnser {
+ studnetName
+ question
+ answer
+ valid 
+ statues:string
+}

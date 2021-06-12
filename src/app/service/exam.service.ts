@@ -31,6 +31,7 @@ export class ExamService {
       params = params.append("Hour", datetime.Hour);
       if (datetime.Minit != undefined || datetime.Minit != null)
       params = params.append("Minit", datetime.Minit);
+      params = params.append("UserId", datetime.UserId);
     return this.http.get(this.api+"GetCurrentExamForStudent", { params: params });
   }
   Answer(anser){

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbToastrService } from '@nebular/theme';
-import { Answer } from '../../../model/exam/answer.model';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { Answer, ShowAsnser } from '../../../model/exam/answer.model';
 import { Exam } from '../../../model/exam/exam.model';
 import { ExamService } from '../../../service/exam.service';
 
@@ -15,7 +16,7 @@ export class ShowAnswersComponent implements OnInit {
   exams: Exam[] = []
   questions: any[] = []
   examId
-  Answers:Answer[]=[]
+  Answers:ShowAsnser[]=[]
   ngOnInit(): void {
     this.GetExam()
   }
@@ -30,7 +31,17 @@ export class ShowAnswersComponent implements OnInit {
   }
   GetAnswer() {
     this.examservvice.GetAnswers(this.examId).subscribe(res => {
-      this.Answers = res as Answer[]
+      console.log(res);
+      this.Answers = res as ShowAsnser[]
+      this.Answers.forEach(c=>{
+        c.statues=c.valid?"صحيحية":"خطأ";
+      })
+      console.log(this.Answers);
     })
+  }
+  IsValid(vaild){
+    if(vaild)
+    return "صحيحة"
+    return "خطأ";
   }
 }
